@@ -72,7 +72,7 @@ export const SITE_CONFIG = {
   phoneRaw: "+2290196960792",
   phoneApi: "2290196960792",
   locationDisplay: "Sakété, Bénin (Rayonnement Panafricain & Diaspora)",
-  siteUrl: "https://www.medium-louis-adama.com",
+  siteUrl: "https://www.voyant-louis-adama.com",
   ogImage: "/images/hero_arch/rituel%20richesse%20prosperite%20(1).webp",
   countries: [
     "France",

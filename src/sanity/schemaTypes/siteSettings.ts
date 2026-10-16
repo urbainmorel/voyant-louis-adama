@@ -61,7 +61,7 @@ export const siteSettingsType = defineType({
       title: 'URL officielle du site',
       type: 'url',
       group: 'general',
-      initialValue: 'https://www.medium-louis-adama.com',
+      initialValue: 'https://www.voyant-louis-adama.com',
     }),
     defineField({
       name: 'heroBadge',

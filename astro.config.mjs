@@ -6,7 +6,7 @@ import sanity from '@sanity/astro';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.medium-louis-adama.com',
+  site: 'https://www.voyant-louis-adama.com',
   integrations: [
     tailwind(),
     sitemap(),

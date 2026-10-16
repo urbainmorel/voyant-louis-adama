@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.medium-louis-adama.com/sitemap-index.xml
+Sitemap: https://www.voyant-louis-adama.com/sitemap-index.xml
