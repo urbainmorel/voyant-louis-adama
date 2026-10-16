@@ -32,7 +32,7 @@ const clusters = [
           <i class="fa-solid fa-book-open"></i>
           <span>{SITE_CONFIG.blogHeaderBadge}</span>
         </div>
-        <h1 class="text-3xl sm:text-5xl font-extrabold text-[#1F3E72] tracking-tight leading-tight">
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-[#1F3E72] tracking-tight leading-snug sm:leading-[1.24]">
           {SITE_CONFIG.blogHeaderTitle}
         </h1>
         <p class="mt-4 text-sm sm:text-base text-[#8C8B91] leading-relaxed">
@@ -84,7 +84,7 @@ const clusters = [
               </div>
 
               <div class="px-1">
-                <div class="flex items-center gap-3 text-xs text-[#8C8B91] font-medium mb-2">
+                <div class="flex items-center gap-3 text-sm sm:text-xs text-[#8C8B91] font-medium mb-2">
                   <span><i class="fa-regular fa-calendar text-[#FF8A00] mr-1.5"></i>{post.date}</span>
                   <span>•</span>
                   <span><i class="fa-regular fa-clock text-[#2949C6] mr-1.5"></i>{post.readTime}</span>
@@ -94,7 +94,7 @@ const clusters = [
                     {post.title}
                   </a>
                 </h2>
-                <p class="mt-2 text-xs text-[#8C8B91] leading-relaxed line-clamp-3">
+                <p class="mt-2 text-sm sm:text-sm text-[#8C8B91] leading-relaxed line-clamp-3">
                   {post.excerpt}
                 </p>
               </div>
@@ -103,7 +103,7 @@ const clusters = [
             <div class="px-1 mt-5 pt-3 border-t border-[#F0F3FA] flex items-center justify-between">
               <a 
                 href={`/blog/${post.slug}`} 
-                class="text-xs font-bold text-[#2949C6] group-hover:text-[#FF8A00] transition-colors inline-flex items-center gap-1.5"
+                class="text-sm sm:text-xs font-bold text-[#2949C6] group-hover:text-[#FF8A00] transition-colors inline-flex items-center gap-1.5"
               >
                 <span>Lire l'article</span>
                 <i class="fa-solid fa-arrow-right text-[10px]"></i>

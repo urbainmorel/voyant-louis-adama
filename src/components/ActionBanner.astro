@@ -15,7 +15,7 @@ const SITE_CONFIG = await getSiteSettings();
       </svg>
 
       <div class="relative z-10 max-w-2xl mx-auto">
-        <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">
+        <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight leading-snug sm:leading-[1.28]">
           {SITE_CONFIG.actionBannerTitle}<span class="text-[#FF8A00]">.</span>
         </h2>
         <p class="mt-4 text-white/85 text-xs sm:text-sm leading-relaxed max-w-lg mx-auto">
@@ -35,7 +35,7 @@ const SITE_CONFIG = await getSiteSettings();
           </a>
         </div>
 
-        <div class="mt-7 text-white/70 text-xs flex items-center justify-center gap-4">
+        <div class="mt-7 text-white/70 text-sm sm:text-xs flex items-center justify-center gap-4">
           <span><i class="fa-solid fa-lock text-[#25D366] mr-1"></i>{SITE_CONFIG.actionBannerBadge1}</span>
           <span>•</span>
           <span><i class="fa-solid fa-shield-halved text-[#25D366] mr-1"></i>{SITE_CONFIG.actionBannerBadge2}</span>

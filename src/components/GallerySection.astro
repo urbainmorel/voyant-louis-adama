@@ -14,7 +14,7 @@ const photoCards = await getGalleryPhotos();
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
         <div>
           <span class="text-[#FF8A00] font-semibold text-base sm:text-lg block mb-1">{SITE_CONFIG.videoGalleryBadge}</span>
-          <h2 class="text-2xl sm:text-4xl font-bold text-[#1F3E72] tracking-tight">
+          <h2 class="text-2xl sm:text-4xl font-bold text-[#1F3E72] tracking-tight leading-snug sm:leading-[1.28]">
             {SITE_CONFIG.videoGalleryTitle}<span class="text-[#FF8A00]">.</span>
           </h2>
         </div>
@@ -47,10 +47,10 @@ const photoCards = await getGalleryPhotos();
               <!-- Content Meta -->
               <div class="px-1">
                 <div class="flex items-center gap-2">
-                  <span class="px-2.5 py-0.5 rounded-md bg-[#EEF2FF] text-[#2949C6] text-[11px] font-bold">
+                  <span class="px-2.5 py-0.5 rounded-md bg-[#EEF2FF] text-[#2949C6] text-xs sm:text-[11px] font-bold">
                     {video.badge}
                   </span>
-                  <span class="text-xs text-[#8C8B91] font-medium flex items-center gap-1">
+                  <span class="text-sm sm:text-xs text-[#8C8B91] font-medium flex items-center gap-1">
                     <i class="fa-brands fa-youtube text-red-600 text-sm"></i>
                     <span>Vidéo Officielle</span>
                   </span>
@@ -64,12 +64,12 @@ const photoCards = await getGalleryPhotos();
                 href={`https://wa.me/${SITE_CONFIG.phoneApi}?text=${encodeURIComponent(`Bonjour Maître Louis Adama, j'ai visionné votre vidéo YouTube "${video.title}" et je souhaite vous contacter.`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-xs font-bold text-[#25D366] hover:underline inline-flex items-center gap-1.5"
+                class="text-sm sm:text-xs font-bold text-[#25D366] hover:underline inline-flex items-center gap-1.5"
               >
                 <i class="fa-brands fa-whatsapp text-sm"></i>
                 <span>Nous Contacter</span>
               </a>
-              <span class="text-[11px] text-[#8C8B91] font-semibold">Sanctuaire Sacré</span>
+              <span class="text-xs sm:text-[11px] text-[#8C8B91] font-semibold">Sanctuaire Sacré</span>
             </div>
           </div>
         ))}
@@ -81,7 +81,7 @@ const photoCards = await getGalleryPhotos();
       <!-- Section Header matching design: small uppercase tag + modern title -->
       <div class="text-center max-w-xl mx-auto mb-10">
         <span class="text-[#FF8A00] font-bold text-xs uppercase tracking-widest block mb-2">{SITE_CONFIG.photoGalleryBadge}</span>
-        <h2 class="text-2xl sm:text-4xl font-extrabold text-[#1F3E72] tracking-tight">
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-[#1F3E72] tracking-tight leading-snug sm:leading-[1.28]">
           {SITE_CONFIG.photoGalleryTitle}<span class="text-[#FF8A00]">.</span>
         </h2>
       </div>

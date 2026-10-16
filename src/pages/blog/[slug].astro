@@ -55,7 +55,7 @@ const relatedPosts = allPosts
       </div>
 
       <!-- Article Title (H1 strictly without Sakété) -->
-      <h1 class="text-2xl sm:text-4xl lg:text-[42px] font-extrabold text-[#1F3E72] tracking-tight leading-tight mb-8">
+      <h1 class="text-2xl sm:text-4xl lg:text-[42px] font-extrabold text-[#1F3E72] tracking-tight leading-snug sm:leading-[1.28] mb-8">
         {post.title}
       </h1>
 
@@ -83,7 +83,7 @@ const relatedPosts = allPosts
           <i class="fa-solid fa-bookmark text-[#2949C6]"></i>
           <span>Points Clés Retenus Par la Tradition</span>
         </h2>
-        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-[#1F3E72]">
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm sm:text-sm text-[#1F3E72]">
           {post.keyTakeaways.map((point) => (
             <li class="flex items-start gap-2">
               <i class="fa-solid fa-circle-check text-[#25D366] text-xs mt-1 shrink-0"></i>
@@ -94,7 +94,7 @@ const relatedPosts = allPosts
       </div>
 
       <!-- Content Paragraphs -->
-      <div class="bg-white p-7 sm:p-10 rounded-2xl border border-[#F0F3FA] shadow-sm text-sm sm:text-base text-[#1F3E72]/90 leading-relaxed space-y-6">
+      <div class="bg-white p-7 sm:p-10 rounded-2xl border border-[#F0F3FA] shadow-sm text-base sm:text-base text-[#1F3E72]/90 leading-relaxed space-y-6">
         {post.content.map((p) => (
           <p>{p}</p>
         ))}
@@ -104,7 +104,7 @@ const relatedPosts = allPosts
           <h3 class="font-bold text-sm sm:text-base text-[#1F3E72] mb-1">
             Le Conseil du Grand Médium Voyant Louis Adama :
           </h3>
-          <p class="text-xs sm:text-sm text-[#8C8B91] leading-relaxed">
+          <p class="text-sm sm:text-base text-[#8C8B91] leading-relaxed">
             « {post.adviceQuote || "Ne laissez jamais un blocage financier ou une déchirure amoureuse s'enraciner avec le temps. Plus l'intervention spirituelle est rapide, plus la délivrance est nette et lumineuse."} »
           </p>
         </div>

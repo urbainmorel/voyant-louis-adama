@@ -30,7 +30,7 @@ const SITE_CONFIG = await getSiteSettings();
       <!-- Right Column: Presentation, Title and 4 Interactive Accordions -->
       <div class="lg:col-span-6">
         <span class="text-[#FF8A00] font-semibold text-base sm:text-lg block mb-1">Nos Valeurs & Autorité</span>
-        <h2 class="text-2xl sm:text-4xl font-bold text-[#1F3E72] tracking-tight">
+        <h2 class="text-2xl sm:text-4xl font-bold text-[#1F3E72] tracking-tight leading-snug sm:leading-[1.28]">
           {SITE_CONFIG.valuesTitle}<span class="text-[#FF8A00]">.</span>
         </h2>
         <p class="mt-4 text-[#8C8B91] text-sm sm:text-base leading-relaxed">
@@ -56,7 +56,7 @@ const SITE_CONFIG = await getSiteSettings();
                 </div>
               </div>
               <div class="accordion-content">
-                <p class="pt-4 text-xs sm:text-sm text-[#8C8B91] leading-relaxed">
+                <p class="pt-4 text-sm sm:text-base text-[#8C8B91] leading-relaxed">
                   {item.description}
                 </p>
               </div>
