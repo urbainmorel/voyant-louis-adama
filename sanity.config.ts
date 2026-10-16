@@ -1,5 +1,6 @@
 import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
+import { media } from 'sanity-plugin-media';
 import { schemaTypes } from './src/sanity/schemaTypes';
 
 export default defineConfig({
@@ -9,6 +10,7 @@ export default defineConfig({
   dataset: 'production',
   basePath: '/studio',
   plugins: [
+    media(),
     structureTool({
       structure: (S) =>
         S.list()
