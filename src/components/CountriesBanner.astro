@@ -14,14 +14,17 @@ const SITE_CONFIG = await getSiteSettings();
 
     <!-- 9 Priority Target Countries Badge Grid -->
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3.5 items-center justify-center">
-      {SITE_CONFIG.countries.map((country) => (
-        <div class="flex items-center justify-center gap-2.5 px-4 py-3 rounded-xl bg-[#FAFBFD] border border-[#EEF2FF] hover:border-[#2949C6]/30 hover:shadow-sm transition-all group">
-          <i class="fa-solid fa-location-dot text-[#FF8A00] group-hover:text-[#2949C6] transition-colors text-xs"></i>
-          <span class="text-base sm:text-sm font-bold text-[#1F3E72] group-hover:text-[#2949C6] transition-colors">
-            {country}
-          </span>
-        </div>
-      ))}
+      {SITE_CONFIG.countries.map((country) => {
+        const isBenin = country.toLowerCase().includes('bénin') || country.toLowerCase().includes('benin');
+        return (
+          <div class={`${isBenin ? 'hidden sm:flex' : 'flex'} items-center justify-center gap-2.5 px-4 py-3 rounded-xl bg-[#FAFBFD] border border-[#EEF2FF] hover:border-[#2949C6]/30 hover:shadow-sm transition-all group`}>
+            <i class="fa-solid fa-location-dot text-[#FF8A00] group-hover:text-[#2949C6] transition-colors text-xs"></i>
+            <span class="text-base sm:text-sm font-bold text-[#1F3E72] group-hover:text-[#2949C6] transition-colors">
+              {country}
+            </span>
+          </div>
+        );
+      })}
     </div>
   </div>
 </section>
