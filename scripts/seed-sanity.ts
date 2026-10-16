@@ -61,7 +61,7 @@ async function seedSanity() {
     videoGalleryTitle: 'Vidéos des Rituels & Cérémonies Sacrées',
     videoGallerySubtitle: 'Visionnez directement les cérémonies menées au sanctuaire du Grand Médium Voyant Africain Louis Adama.',
     photoGalleryBadge: 'Galerie',
-    photoGalleryTitle: 'Immersion au Sanctuaire',
+    photoGalleryTitle: 'Quelques photos de rituels',
     blogHeaderBadge: 'Cocon Sémantique Initiatique',
     blogHeaderTitle: "Guides et Enseignements Spirituels d'Afrique",
     blogHeaderSubtitle:

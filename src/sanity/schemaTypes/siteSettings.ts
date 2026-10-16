@@ -271,10 +271,10 @@ export const siteSettingsType = defineType({
     defineField({
       name: 'photoGalleryTitle',
       title: 'Titre de la section Galerie Photos',
-      description: 'Exemple : Immersion au Sanctuaire',
+      description: 'Exemple : Quelques photos de rituels',
       type: 'string',
       group: 'sections',
-      initialValue: 'Immersion au Sanctuaire',
+      initialValue: 'Quelques photos de rituels',
     }),
     defineField({
       name: 'blogHeaderBadge',
