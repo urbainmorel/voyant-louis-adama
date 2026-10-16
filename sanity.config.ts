@@ -15,19 +15,22 @@ export default defineConfig({
           .title('Gestion du Contenu')
           .items([
             S.listItem()
-              .title('Paramètres & Page d’Accueil')
+              .title('Paramètres & Textes Globaux')
               .id('siteSettings')
               .child(
                 S.document()
                   .schemaType('siteSettings')
                   .documentId('siteSettings')
-                  .title('Paramètres & Page d’Accueil')
+                  .title('Paramètres & Textes Globaux')
               ),
             S.divider(),
-            S.documentTypeListItem('post').title('Articles du Blog Spirituel (20)'),
-            S.documentTypeListItem('service').title('Rituels & Services (6)'),
+            S.documentTypeListItem('post').title('Articles du Blog Spirituel'),
+            S.documentTypeListItem('service').title('Rituels & Services'),
             S.divider(),
-            S.documentTypeListItem('testimonial').title('Témoignages Clients (12)'),
+            S.documentTypeListItem('youtubeVideo').title('Galerie Vidéos YouTube'),
+            S.documentTypeListItem('galleryPhoto').title('Galerie Photos Sanctuaire'),
+            S.divider(),
+            S.documentTypeListItem('testimonial').title('Témoignages Clients'),
             S.documentTypeListItem('faq').title('Questions Fréquentes (FAQ)'),
             S.documentTypeListItem('valueItem').title('Valeurs & Autorité'),
           ]),

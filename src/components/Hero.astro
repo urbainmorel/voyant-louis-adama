@@ -95,26 +95,26 @@ const SITE_CONFIG = await getSiteSettings();
         <div class="mt-12 grid grid-cols-3 gap-4 sm:gap-8 max-w-md border-t border-white/10 pt-8">
           <div>
             <div class="text-white text-2xl sm:text-3xl font-extrabold tracking-tight">
-              15K<span class="text-[#FF8A00]">+</span>
+              {SITE_CONFIG.heroStat1Number}
             </div>
-            <p class="mt-1 text-xs sm:text-sm text-[#8E8D95] leading-snug">
-              Rituels<br />Réalisés
+            <p class="mt-1 text-xs sm:text-sm text-[#8E8D95] leading-snug whitespace-pre-line">
+              {SITE_CONFIG.heroStat1Label}
             </p>
           </div>
           <div>
             <div class="text-white text-2xl sm:text-3xl font-extrabold tracking-tight">
-              98<span class="text-[#FF8A00]">%</span>
+              {SITE_CONFIG.heroStat2Number}
             </div>
-            <p class="mt-1 text-xs sm:text-sm text-[#8E8D95] leading-snug">
-              Avis<br />Favorables
+            <p class="mt-1 text-xs sm:text-sm text-[#8E8D95] leading-snug whitespace-pre-line">
+              {SITE_CONFIG.heroStat2Label}
             </p>
           </div>
           <div>
             <div class="text-white text-2xl sm:text-3xl font-extrabold tracking-tight">
-              25<span class="text-[#FF8A00]">+</span>
+              {SITE_CONFIG.heroStat3Number}
             </div>
-            <p class="mt-1 text-xs sm:text-sm text-[#8E8D95] leading-snug">
-              Années<br />d'Expérience
+            <p class="mt-1 text-xs sm:text-sm text-[#8E8D95] leading-snug whitespace-pre-line">
+              {SITE_CONFIG.heroStat3Label}
             </p>
           </div>
         </div>
@@ -125,9 +125,9 @@ const SITE_CONFIG = await getSiteSettings();
       <div class="lg:col-span-6 flex justify-center lg:justify-end relative">
         <div class="arch-frame-hero w-full max-w-[440px] h-[480px] sm:h-[560px] lg:-mb-28 relative group bg-[#1C1A24]">
           <picture>
-            <source srcset="/images/hero_arch/maitre-voyant-adama-hero.webp" type="image/webp" />
+            <source srcset={SITE_CONFIG.heroImage} type="image/webp" />
             <img 
-              src="/images/hero_arch/maitre-voyant-adama-hero.webp" 
+              src={SITE_CONFIG.heroImage} 
               alt="Autel et attestation de mérite du Grand Médium Voyant Africain Louis Adama" 
               title="Attestation officielle et sanctuaire sacré du Maître Louis Adama"
               width="440"

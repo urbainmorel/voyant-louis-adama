@@ -12,9 +12,9 @@ const SITE_CONFIG = await getSiteSettings();
       <div class="lg:col-span-6 flex justify-center lg:justify-start">
         <div class="arch-frame-light w-full max-w-[440px] h-[470px] sm:h-[530px] relative group bg-[#F5F8FF]">
           <picture>
-            <source srcset="/images/hero_arch/couvent%20marabout%20(4).webp" type="image/webp" />
+            <source srcset={SITE_CONFIG.valuesImage} type="image/webp" />
             <img 
-              src="/images/hero_arch/couvent%20marabout%20(4).webp" 
+              src={SITE_CONFIG.valuesImage} 
               alt="Couvent traditionnel du Grand Médium Voyant Africain Louis Adama" 
               title="Sanctuaire sacré et transmissions ancestrales du Maître Louis Adama"
               width="440"

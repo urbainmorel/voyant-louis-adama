@@ -1,104 +1,9 @@
 ---
-import { SITE_CONFIG } from '../data/siteData';
+import { getSiteSettings, getYoutubeVideos, getGalleryPhotos } from '../lib/sanity';
 
-const youtubeVideos = [
-  {
-    id: "sU27vKKbg2Y",
-    title: "Cérémonie & Rituels Sacrés de Haute Prospérité",
-    desc: "Découvrez les invocations et travaux de délivrance financière conduits au sanctuaire par le Médium Louis Adama.",
-    badge: "Haute Prospérité",
-    category: "Richesse"
-  },
-  {
-    id: "Io0TnBO6s_k",
-    title: "Retour Affectif Rapide & Cadenas d'Amour",
-    desc: "Témoignage rituel sur la reconquête amoureuse, le retour de l'être aimé et la pacification du couple.",
-    badge: "Amour & Harmonie",
-    category: "Amour"
-  },
-  {
-    id: "y1aIDutgAfE",
-    title: "Bains de Purification & Savons Sacrés de Chance",
-    desc: "Préparation des écorces et eaux saintes pour dissoudre les ondes négatives et attirer la chance.",
-    badge: "Purification",
-    category: "Purification"
-  },
-  {
-    id: "54P3UgNaPe4",
-    title: "Blindage Spirituel & Protection du Foyer",
-    desc: "Rituel de protection contre la sorcellerie, le mauvais œil et les attaques de la jalousie.",
-    badge: "Haute Protection",
-    category: "Protection"
-  }
-];
-
-const photoCards = [
-  {
-    title: "Rituel de Richesse & Prospérité 8",
-    category: "Richesse",
-    image: "/images/cards/rituel%20richesse%20prosperite%20(8).webp"
-  },
-  {
-    title: "Rituel de Richesse & Prospérité 1",
-    category: "Richesse",
-    image: "/images/cards/rituel%20richesse%20prosperite%20(1).webp"
-  },
-  {
-    title: "Rituel de Richesse & Prospérité 2",
-    category: "Richesse",
-    image: "/images/cards/rituel%20richesse%20prosperite%20(2).webp"
-  },
-  {
-    title: "Rituel de Richesse & Prospérité 3",
-    category: "Richesse",
-    image: "/images/cards/rituel%20richesse%20prosperite%20(3).webp"
-  },
-  {
-    title: "Rituel de Richesse & Prospérité 4",
-    category: "Richesse",
-    image: "/images/cards/rituel%20richesse%20prosperite%20(4).webp"
-  },
-  {
-    title: "Rituel de Richesse & Prospérité 5",
-    category: "Richesse",
-    image: "/images/cards/rituel%20richesse%20prosperite%20(5).webp"
-  },
-  {
-    title: "Rituel de Richesse & Prospérité 6",
-    category: "Richesse",
-    image: "/images/cards/rituel%20richesse%20prosperite%20(6).webp"
-  },
-  {
-    title: "Rituel de Richesse & Prospérité 7",
-    category: "Richesse",
-    image: "/images/cards/rituel%20richesse%20prosperite%20(7).webp"
-  },
-  {
-    title: "Rituel de Richesse & Prospérité 9",
-    category: "Richesse",
-    image: "/images/cards/rituel%20richesse%20prosperite%20(9).webp"
-  },
-  {
-    title: "Rituel de Richesse & Prospérité 10",
-    category: "Richesse",
-    image: "/images/cards/rituel%20richesse%20prosperite%20(10).webp"
-  },
-  {
-    title: "Rituel de Richesse & Prospérité 11",
-    category: "Richesse",
-    image: "/images/cards/rituel%20richesse%20prosperite%20(11).webp"
-  },
-  {
-    title: "Rituel de Richesse & Prospérité 12",
-    category: "Richesse",
-    image: "/images/cards/rituel%20richesse%20prosperite%20(12).webp"
-  },
-  {
-    title: "Rituel de Richesse & Prospérité 13",
-    category: "Richesse",
-    image: "/images/cards/rituel%20richesse%20prosperite%20(13).webp"
-  }
-];
+const SITE_CONFIG = await getSiteSettings();
+const youtubeVideos = await getYoutubeVideos();
+const photoCards = await getGalleryPhotos();
 ---
 
 <section id="gallery" class="py-16 md:py-24 bg-white border-t border-[#F0F3FA]">
@@ -108,13 +13,13 @@ const photoCards = [
     <div class="mb-20">
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
         <div>
-          <span class="text-[#FF8A00] font-semibold text-base sm:text-lg block mb-1">Immersion Spirituelle en Vidéo</span>
+          <span class="text-[#FF8A00] font-semibold text-base sm:text-lg block mb-1">{SITE_CONFIG.videoGalleryBadge}</span>
           <h2 class="text-2xl sm:text-4xl font-bold text-[#1F3E72] tracking-tight">
-            Vidéos des Rituels & Cérémonies Sacrées<span class="text-[#FF8A00]">.</span>
+            {SITE_CONFIG.videoGalleryTitle}<span class="text-[#FF8A00]">.</span>
           </h2>
         </div>
         <p class="text-xs sm:text-sm text-[#8C8B91] max-w-sm">
-          Visionnez directement les cérémonies menées au sanctuaire du Grand Médium Voyant Africain Louis Adama.
+          {SITE_CONFIG.videoGallerySubtitle}
         </p>
       </div>
 
@@ -175,9 +80,9 @@ const photoCards = [
     <div class="pt-12 border-t border-[#F0F3FA] relative overflow-hidden">
       <!-- Section Header matching design: small uppercase tag + modern title -->
       <div class="text-center max-w-xl mx-auto mb-10">
-        <span class="text-[#FF8A00] font-bold text-xs uppercase tracking-widest block mb-2">Galerie</span>
+        <span class="text-[#FF8A00] font-bold text-xs uppercase tracking-widest block mb-2">{SITE_CONFIG.photoGalleryBadge}</span>
         <h2 class="text-2xl sm:text-4xl font-extrabold text-[#1F3E72] tracking-tight">
-          Immersion au Sanctuaire<span class="text-[#FF8A00]">.</span>
+          {SITE_CONFIG.photoGalleryTitle}<span class="text-[#FF8A00]">.</span>
         </h2>
       </div>
 

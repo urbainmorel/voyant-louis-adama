@@ -105,7 +105,7 @@ const relatedPosts = allPosts
             Le Conseil du Grand Médium Voyant Louis Adama :
           </h3>
           <p class="text-xs sm:text-sm text-[#8C8B91] leading-relaxed">
-            « Ne laissez jamais un blocage financier ou une déchirure amoureuse s'enraciner avec le temps. Plus l'intervention spirituelle est rapide, plus la délivrance est nette et lumineuse. »
+            « {post.adviceQuote || "Ne laissez jamais un blocage financier ou une déchirure amoureuse s'enraciner avec le temps. Plus l'intervention spirituelle est rapide, plus la délivrance est nette et lumineuse."} »
           </p>
         </div>
       </div>
@@ -114,9 +114,9 @@ const relatedPosts = allPosts
       <div class="mt-10 p-8 rounded-2xl bg-gradient-to-r from-[#131117] to-[#1F3E72] text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
         <div>
           <span class="text-xs uppercase tracking-widest text-[#FF8A00] font-bold">Consultation Personnalisée</span>
-          <h3 class="text-xl sm:text-2xl font-bold mt-1">Besoin d'un Rituel Sur-Mesure ?</h3>
+          <h3 class="text-xl sm:text-2xl font-bold mt-1">{post.ctaBannerTitle || "Besoin d'un Rituel Sur-Mesure ?"}</h3>
           <p class="text-xs sm:text-sm text-white/75 mt-1 max-w-md">
-            Échangez directement avec le Maître Louis Adama sur WhatsApp pour un diagnostic précis de votre situation.
+            {post.ctaBannerSubtitle || "Échangez directement avec le Maître Louis Adama sur WhatsApp pour un diagnostic précis de votre situation."}
           </p>
         </div>
         <a 

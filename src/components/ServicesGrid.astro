@@ -10,13 +10,13 @@ const SITE_CONFIG = await getSiteSettings();
     <!-- Section Header -->
     <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
       <div>
-        <span class="text-[#FF8A00] font-semibold text-base sm:text-lg block mb-1">Prestations Majeures</span>
+        <span class="text-[#FF8A00] font-semibold text-base sm:text-lg block mb-1">{SITE_CONFIG.servicesBadge}</span>
         <h2 class="text-2xl sm:text-4xl font-bold text-[#1F3E72] tracking-tight">
-          Nos Services Spirituels Majeurs<span class="text-[#FF8A00]">.</span>
+          {SITE_CONFIG.servicesTitle}<span class="text-[#FF8A00]">.</span>
         </h2>
       </div>
       <p class="text-xs sm:text-sm text-[#8C8B91] max-w-sm">
-        Découvrez nos pôles d'action spirituelle dédiés à votre élévation matérielle et sentimentale :
+        {SITE_CONFIG.servicesSubtitle}
       </p>
     </div>
 

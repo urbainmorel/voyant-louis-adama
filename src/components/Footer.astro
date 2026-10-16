@@ -22,7 +22,7 @@ const SITE_CONFIG = await getSiteSettings();
         </a>
         
         <p class="text-xs sm:text-sm text-[#A09FA7] leading-relaxed max-w-sm">
-          Grand Maître Spirituel et Voyant Africain. Rituels traditionnels de prospérité, retour affectif, chance et protection spirituelle.
+          {SITE_CONFIG.footerBio}
         </p>
 
         <!-- Simple, Elegant Contact Info -->
@@ -100,7 +100,7 @@ const SITE_CONFIG = await getSiteSettings();
     <!-- Bottom Bar -->
     <div class="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#8E8D95]">
       <p>© {new Date().getFullYear()} Médium Louis Adama. Tous droits réservés.</p>
-      <p class="text-xs text-[#8E8D95]">Confidentialité absolue & Secret professionnel garanti</p>
+      <p class="text-xs text-[#8E8D95]">{SITE_CONFIG.footerReassurance}</p>
     </div>
 
   </div>

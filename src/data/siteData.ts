@@ -63,6 +63,24 @@ export interface BlogPost {
   content: string[];
   featured?: boolean;
   keyTakeaways: string[];
+  adviceQuote?: string;
+  ctaBannerTitle?: string;
+  ctaBannerSubtitle?: string;
+}
+
+export interface YouTubeVideoItem {
+  id: string;
+  videoId: string;
+  title: string;
+  desc: string;
+  badge: string;
+  category: string;
+}
+
+export interface GalleryPhotoItem {
+  title: string;
+  category: string;
+  image: string;
 }
 
 export const SITE_CONFIG = {
