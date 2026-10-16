@@ -8,4 +8,6 @@ dist/
 screenshot_*.png
 resized/
 louis_adama_template.html
-.wrangler/
+preview_*.png
+scratch/
+test_*.png
