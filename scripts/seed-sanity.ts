@@ -117,7 +117,22 @@ async function seedSanity() {
       metaDescription: p.metaDescription,
       featured: Boolean(p.featured || featuredIndices.has(i)),
       keyTakeaways: p.keyTakeaways,
-      content: p.content,
+      content: Array.isArray(p.content)
+        ? p.content.map((paragraph: string, pIdx: number) => ({
+            _type: 'block',
+            _key: `block_${i}_${pIdx}`,
+            style: 'normal',
+            markDefs: [],
+            children: [
+              {
+                _type: 'span',
+                _key: `span_${i}_${pIdx}`,
+                text: paragraph,
+                marks: [],
+              },
+            ],
+          }))
+        : p.content,
       adviceQuote:
         p.adviceQuote ||
         'Ne laissez jamais un blocage financier ou une déchirure amoureuse s\'enraciner avec le temps. Plus l\'intervention spirituelle est rapide, plus la délivrance est nette et lumineuse.',

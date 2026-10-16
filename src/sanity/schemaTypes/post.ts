@@ -145,11 +145,6 @@ export const postType = defineType({
             },
           ],
         },
-        {
-          type: 'text',
-          rows: 4,
-          title: 'Paragraphe simple (Rétrocompatibilité)',
-        },
       ],
       validation: (rule) => rule.required().error('Le contenu de l’article est obligatoire'),
     }),
