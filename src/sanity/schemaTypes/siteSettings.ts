@@ -81,7 +81,7 @@ export const siteSettingsType = defineType({
       description: 'Pastille lumineuse située en haut de la page d’accueil.',
       type: 'string',
       group: 'hero',
-      initialValue: 'Grand Maître Spirituel et Voyant Africain – Consultations 7j/7',
+      initialValue: 'Grand Maître Spirituel et Voyant Africain',
     }),
     defineField({
       name: 'heroTitle',

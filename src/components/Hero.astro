@@ -4,7 +4,7 @@ const SITE_CONFIG = await getSiteSettings();
 ---
 
 <section id="hero" class="hero-bg pt-28 md:pt-36 pb-16 md:pb-24 relative overflow-visible">
-  <!-- Arrière-plan optimisé responsive (AVIF/WebP) avec overlay pour lisibilité parfaite -->
+  <!-- Arrière-plan optimisé responsive (AVIF/WebP) -->
   <picture class="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden z-0">
     <!-- AVIF sources -->
     <source media="(min-width: 1024px)" srcset="/images/hero/hero-bg-desktop.avif" type="image/avif" />
@@ -27,7 +27,6 @@ const SITE_CONFIG = await getSiteSettings();
       class="w-full h-full object-cover object-center opacity-45 mix-blend-screen"
     />
   </picture>
-  <div class="absolute inset-0 bg-gradient-to-b from-[#131117]/80 via-[#131117]/60 to-[#131117] pointer-events-none z-0" aria-hidden="true"></div>
 
   <!-- Subtle Topographic Concentric Arcs SVG matching the signature dark template -->
   <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-20 z-0" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
@@ -54,7 +53,7 @@ const SITE_CONFIG = await getSiteSettings();
       <div class="lg:col-span-6 pt-2 md:pt-6">
         
         <!-- Authority Pill Badge -->
-        <div class="inline-flex items-center px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-xs text-[#FFB03A] font-semibold mb-6">
+        <div class="inline-flex items-center px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-xs text-white font-semibold mb-6">
           <span>{SITE_CONFIG.heroBadge}</span>
         </div>
 

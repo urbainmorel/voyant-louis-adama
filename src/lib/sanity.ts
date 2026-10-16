@@ -71,7 +71,7 @@ export interface SiteSettingsData {
 
 const DEFAULT_SETTINGS: SiteSettingsData = {
   ...SITE_CONFIG,
-  heroBadge: 'Grand Maître Spirituel et Voyant Africain – Consultations 7j/7',
+  heroBadge: 'Grand Maître Spirituel et Voyant Africain',
   heroTitle: 'Richesse, Prospérité Financière, Chance et Retour Affectif',
   heroSubtitle:
     "Finances bloquées, commerce en difficulté ou souffrance amoureuse causée par une rivale ? Le grand Médium Voyant Louis Adama met la puissance des rituels traditionnels africains au service de votre réussite financière, de votre chance et de l'harmonie de votre couple.",
