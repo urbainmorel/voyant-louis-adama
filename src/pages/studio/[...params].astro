@@ -1,0 +1,33 @@
+---
+import Studio from '../../components/Studio.tsx';
+
+export function getStaticPaths() {
+  return [
+    { params: { params: undefined } },
+    { params: { params: 'desk' } },
+  ];
+}
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <title>Médium Louis Adama - Sanity Studio</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <Studio client:only="react" />
+  </body>
+</html>

@@ -22,7 +22,7 @@
   "author": "Médium Louis Adama",
   "license": "ISC",
   "dependencies": {
-    "@astrojs/react": "^7.1.0",
+    "@astrojs/react": "^4.4.2",
     "@astrojs/sitemap": "^3.7.4",
     "@astrojs/tailwind": "^6.0.2",
     "@sanity/astro": "^3.5.1",

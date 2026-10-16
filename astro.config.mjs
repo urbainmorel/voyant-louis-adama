@@ -14,8 +14,12 @@ export default defineConfig({
     sanity({
       projectId: '53eovdkv',
       dataset: 'production',
-      studioBasePath: '/studio',
       useCdn: false,
     }),
   ],
+  vite: {
+    optimizeDeps: {
+      exclude: ['sanity'],
+    },
+  },
 });
