@@ -1,0 +1,66 @@
+---
+import { getFaqs } from '../lib/sanity';
+const FAQ_DATA = await getFaqs();
+---
+
+<section id="faq" class="py-16 md:py-24 bg-white">
+  <div class="max-w-4xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-12">
+      <span class="text-[#FF8A00] font-semibold text-base sm:text-lg block mb-1">Questions Fréquentes</span>
+      <h2 class="text-2xl sm:text-4xl font-bold text-[#1F3E72] tracking-tight">
+        Questions Fréquentes sur les Travaux Spirituels<span class="text-[#FF8A00]">.</span>
+      </h2>
+      <p class="mt-3 text-sm sm:text-base text-[#8C8B91]">
+        Des réponses transparentes et précises pour aborder votre consultation en toute confiance.
+      </p>
+    </div>
+
+    <div class="space-y-4" id="faqAccordion">
+      {FAQ_DATA.map((item, index) => (
+        <div 
+          class={`faq-item rounded-xl border border-[#EEF2FF] bg-white p-5 sm:p-6 transition-all cursor-pointer ${item.activeByDefault ? 'active' : ''}`}
+          data-index={index}
+        >
+          <div class="flex items-center justify-between gap-4">
+            <h3 class="font-bold text-sm sm:text-base text-[#1F3E72] leading-snug">
+              {item.question}
+            </h3>
+            <span class="w-8 h-8 rounded-lg bg-[#EEF2FF] text-[#2949C6] flex items-center justify-center shrink-0">
+              <i class={`faq-icon fa-solid ${item.activeByDefault ? 'fa-minus' : 'fa-plus'} text-xs`}></i>
+            </span>
+          </div>
+          <div class="faq-content">
+            <p class="pt-4 text-xs sm:text-sm text-[#8C8B91] leading-relaxed">
+              {item.answer}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  function setupFaq() {
+    const items = document.querySelectorAll('#faqAccordion .faq-item');
+    items.forEach((item) => {
+      item.addEventListener('click', () => {
+        const wasActive = item.classList.contains('active');
+        items.forEach(el => {
+          el.classList.remove('active');
+          const icon = el.querySelector('.faq-icon');
+          if (icon) icon.className = 'faq-icon fa-solid fa-plus text-xs';
+        });
+
+        if (!wasActive) {
+          item.classList.add('active');
+          const icon = item.querySelector('.faq-icon');
+          if (icon) icon.className = 'faq-icon fa-solid fa-minus text-xs';
+        }
+      });
+    });
+  }
+
+  setupFaq();
+  document.addEventListener('astro:page-load', setupFaq);
+</script>

@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none" class="w-full h-full">
+  <defs>
+    <!-- Gradient or pour le cauris -->
+    <linearGradient id="cauriGold" x1="15%" y1="10%" x2="85%" y2="90%">
+      <stop offset="0%" stop-color="#FFE27A" />
+      <stop offset="45%" stop-color="#E5A93C" />
+      <stop offset="100%" stop-color="#B8771B" />
+    </linearGradient>
+
+    <!-- Gradient subtil pour la bordure interne / volume -->
+    <linearGradient id="cauriInnerGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF5C0" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#844E06" stop-opacity="0.3" />
+    </linearGradient>
+  </defs>
+
+  <!-- Anneau subtil d'énergie spirituelle / cosmologie (minimal) -->
+  <circle cx="50" cy="50" r="45" stroke="url(#cauriGold)" stroke-width="1.5" stroke-opacity="0.3" stroke-dasharray="3 4" />
+
+  <!-- Coquille extérieure du cauris (forme ovoïde stylisée moderne) -->
+  <path
+    d="M 50 14
+       C 68 14 80 28 80 48
+       C 80 70 66 86 50 86
+       C 34 86 20 70 20 48
+       C 20 28 32 14 50 14 Z"
+    fill="url(#cauriGold)"
+  />
+
+  <!-- Ombre douce sous la lèvre pour donner un relief organique épuré -->
+  <path
+    d="M 50 20
+       C 63 20 73 31 73 48
+       C 73 66 62 80 50 80
+       C 38 80 27 66 27 48
+       C 27 31 37 20 50 20 Z"
+    fill="#874E08"
+    opacity="0.25"
+  />
+
+  <!-- Fente centrale sombre du cauris -->
+  <path
+    d="M 50 25
+       C 55 35 55 61 50 75
+       C 45 61 45 35 50 25 Z"
+    fill="#131117"
+  />
+
+  <!-- Dents crénelées stylisées (gauche) -->
+  <path
+    d="M 45 33 H 48.5 M 44 40 H 48.5 M 43.5 47 H 48.5 M 43.5 54 H 48.5 M 44 61 H 48.5 M 45 68 H 48.5"
+    stroke="#FFEAA0"
+    stroke-width="1.8"
+    stroke-linecap="round"
+  />
+
+  <!-- Dents crénelées stylisées (droite) -->
+  <path
+    d="M 51.5 33 H 55 M 51.5 40 H 56 M 51.5 47 H 56.5 M 51.5 54 H 56.5 M 51.5 61 H 56 M 51.5 68 H 55"
+    stroke="#FFEAA0"
+    stroke-width="1.8"
+    stroke-linecap="round"
+  />
+
+  <!-- Point de lumière sacré (or lumineux) au sommet du cauris -->
+  <circle cx="50" cy="20" r="1.8" fill="#FFF8DC" />
+</svg>

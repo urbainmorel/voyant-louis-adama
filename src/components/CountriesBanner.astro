@@ -1,0 +1,27 @@
+---
+import { getSiteSettings } from '../lib/sanity';
+const SITE_CONFIG = await getSiteSettings();
+---
+
+<section class="pt-14 lg:pt-28 pb-12 bg-white border-b border-[#F0F3FA]">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-8">
+      <span class="text-xs uppercase tracking-widest font-extrabold text-[#8C8B91] block mb-2">Nous sommes au service du monde</span>
+      <p class="text-sm font-semibold text-[#1F3E72]">
+        Consultations et rituels à distance avec suivi personnalisé pour les frères et sœurs de :
+      </p>
+    </div>
+
+    <!-- 9 Priority Target Countries Badge Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3.5 items-center justify-center">
+      {SITE_CONFIG.countries.map((country) => (
+        <div class="flex items-center justify-center gap-2.5 px-4 py-3 rounded-xl bg-[#FAFBFD] border border-[#EEF2FF] hover:border-[#2949C6]/30 hover:shadow-sm transition-all group">
+          <i class="fa-solid fa-location-dot text-[#FF8A00] group-hover:text-[#2949C6] transition-colors text-xs"></i>
+          <span class="text-xs sm:text-sm font-bold text-[#1F3E72] group-hover:text-[#2949C6] transition-colors">
+            {country}
+          </span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

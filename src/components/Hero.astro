@@ -1,0 +1,146 @@
+---
+import { getSiteSettings } from '../lib/sanity';
+const SITE_CONFIG = await getSiteSettings();
+---
+
+<section id="hero" class="hero-bg pt-28 md:pt-36 pb-16 md:pb-24 relative overflow-visible">
+  <!-- Arrière-plan optimisé responsive (AVIF/WebP) avec overlay pour lisibilité parfaite -->
+  <picture class="absolute inset-0 w-full h-full pointer-events-none select-none overflow-hidden z-0">
+    <!-- AVIF sources -->
+    <source media="(min-width: 1024px)" srcset="/images/hero/hero-bg-desktop.avif" type="image/avif" />
+    <source media="(min-width: 640px)" srcset="/images/hero/hero-bg-tablet.avif" type="image/avif" />
+    <source srcset="/images/hero/hero-bg-mobile.avif" type="image/avif" />
+    <!-- WebP sources -->
+    <source media="(min-width: 1024px)" srcset="/images/hero/hero-bg-desktop.webp" type="image/webp" />
+    <source media="(min-width: 640px)" srcset="/images/hero/hero-bg-tablet.webp" type="image/webp" />
+    <source srcset="/images/hero/hero-bg-mobile.webp" type="image/webp" />
+    <img 
+      src="/images/hero/hero-bg-desktop.webp" 
+      alt="" 
+      role="presentation"
+      aria-hidden="true"
+      width="1920" 
+      height="1280" 
+      loading="eager" 
+      fetchpriority="high" 
+      decoding="async" 
+      class="w-full h-full object-cover object-center opacity-45 mix-blend-screen"
+    />
+  </picture>
+  <div class="absolute inset-0 bg-gradient-to-b from-[#131117]/80 via-[#131117]/60 to-[#131117] pointer-events-none z-0" aria-hidden="true"></div>
+
+  <!-- Subtle Topographic Concentric Arcs SVG matching the signature dark template -->
+  <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-20 z-0" viewBox="0 0 1440 800" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <circle cx="880" cy="400" r="280" stroke="url(#gradArc)" stroke-width="1"/>
+    <circle cx="880" cy="400" r="340" stroke="url(#gradArc)" stroke-width="1"/>
+    <circle cx="880" cy="400" r="400" stroke="url(#gradArc)" stroke-width="1"/>
+    <circle cx="880" cy="400" r="460" stroke="url(#gradArc)" stroke-width="1"/>
+    <circle cx="880" cy="400" r="520" stroke="url(#gradArc)" stroke-width="1"/>
+    <circle cx="880" cy="400" r="580" stroke="url(#gradArc)" stroke-width="1"/>
+    <circle cx="880" cy="400" r="640" stroke="url(#gradArc)" stroke-width="1"/>
+    <defs>
+      <linearGradient id="gradArc" x1="200" y1="0" x2="1200" y2="800" gradientUnits="userSpaceOnUse">
+        <stop offset="0%" stop-color="#FF8A00" stop-opacity="0.5"/>
+        <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.18"/>
+        <stop offset="100%" stop-color="#2949C6" stop-opacity="0.4"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
+      
+      <!-- Left Column: Authority Badge, H1 Title with glowing sphere, Subtitle, Ultra-short CTAs and Stats -->
+      <div class="lg:col-span-6 pt-2 md:pt-6">
+        
+        <!-- Authority Pill Badge -->
+        <div class="inline-flex items-center px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-xs text-[#FFB03A] font-semibold mb-6">
+          <span>{SITE_CONFIG.heroBadge}</span>
+        </div>
+
+        <div class="relative inline-block">
+          <!-- Signature Orange Sphere positioned behind the first line -->
+          <span class="orange-sphere absolute -top-3 right-2 sm:right-6 z-0 pointer-events-none" aria-hidden="true"></span>
+          <h1 class="relative z-10 text-white font-bold text-3xl sm:text-4xl lg:text-[46px] leading-[1.18] tracking-tight">
+            {SITE_CONFIG.heroTitle}
+          </h1>
+        </div>
+
+        <p class="mt-6 text-[#A09FA7] text-sm sm:text-base leading-relaxed max-w-lg">
+          {SITE_CONFIG.heroSubtitle}
+        </p>
+
+        <!-- CTA Buttons with STRICTLY ULTRA-SHORT LABELS (CRO Rule) -->
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a 
+            href={`https://wa.me/${SITE_CONFIG.phoneApi}?text=${encodeURIComponent('Bonjour Maître Louis Adama, je souhaite une consultation spirituelle immédiate.')}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-xl bg-gradient-to-r from-[#3858D6] to-[#2949C6] hover:from-[#25D366] hover:to-[#1DA851] text-white font-bold text-base shadow-[0_14px_30px_-6px_rgba(41,73,198,0.45)] transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
+          >
+            <i class="fa-brands fa-whatsapp text-2xl text-white"></i>
+            <span>Nous Contacter</span>
+          </a>
+
+          <a 
+            href={`tel:${SITE_CONFIG.phoneRaw}`}
+            class="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-base border border-white/20 backdrop-blur-sm transition-all duration-300 transform hover:-translate-y-0.5 active:translate-y-0"
+          >
+            <i class="fa-solid fa-phone text-sm text-white"></i>
+            <span>Appeler</span>
+          </a>
+        </div>
+
+        <!-- Key Metrics / Stats Row (15K+, 98%, 25+) -->
+        <div class="mt-12 grid grid-cols-3 gap-4 sm:gap-8 max-w-md border-t border-white/10 pt-8">
+          <div>
+            <div class="text-white text-2xl sm:text-3xl font-extrabold tracking-tight">
+              15K<span class="text-[#FF8A00]">+</span>
+            </div>
+            <p class="mt-1 text-xs sm:text-sm text-[#8E8D95] leading-snug">
+              Rituels<br />Réalisés
+            </p>
+          </div>
+          <div>
+            <div class="text-white text-2xl sm:text-3xl font-extrabold tracking-tight">
+              98<span class="text-[#FF8A00]">%</span>
+            </div>
+            <p class="mt-1 text-xs sm:text-sm text-[#8E8D95] leading-snug">
+              Avis<br />Favorables
+            </p>
+          </div>
+          <div>
+            <div class="text-white text-2xl sm:text-3xl font-extrabold tracking-tight">
+              25<span class="text-[#FF8A00]">+</span>
+            </div>
+            <p class="mt-1 text-xs sm:text-sm text-[#8E8D95] leading-snug">
+              Années<br />d'Expérience
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Signature Sacred Frame Geometry (Clean Image, No intrusive overlay) -->
+      <div class="lg:col-span-6 flex justify-center lg:justify-end relative">
+        <div class="arch-frame-hero w-full max-w-[440px] h-[480px] sm:h-[560px] lg:-mb-28 relative group bg-[#1C1A24]">
+          <picture>
+            <source srcset="/images/hero_arch/maitre-voyant-adama-hero.webp" type="image/webp" />
+            <img 
+              src="/images/hero_arch/maitre-voyant-adama-hero.webp" 
+              alt="Autel et attestation de mérite du Grand Médium Voyant Africain Louis Adama" 
+              title="Attestation officielle et sanctuaire sacré du Maître Louis Adama"
+              width="440"
+              height="560"
+              loading="eager"
+              fetchpriority="high"
+              decoding="async"
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+            />
+          </picture>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

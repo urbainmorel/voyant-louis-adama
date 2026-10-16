@@ -1,0 +1,26 @@
+---
+import { getSiteSettings } from '../lib/sanity';
+const SITE_CONFIG = await getSiteSettings();
+---
+
+<!-- Fixed Floating WhatsApp Button (Strict Mobile Rule: NO bottom sticky bar, ONLY this floating button) -->
+<aside aria-label="Contact direct WhatsApp" class="fixed bottom-5 right-5 z-50">
+  <a 
+    href={`https://wa.me/${SITE_CONFIG.phoneApi}?text=${encodeURIComponent('Bonjour Maître Louis Adama, je souhaite une consultation directe.')}`}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contacter le Médium Voyant Louis Adama sur WhatsApp"
+    class="group relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] hover:bg-[#1DA851] text-white shadow-[0_10px_25px_rgba(37,211,102,0.5)] transition-all duration-300 transform hover:scale-110 active:scale-95 focus:outline-none focus:ring-4 focus:ring-[#25D366]/40"
+  >
+    <!-- Ping Radar Wave -->
+    <span class="absolute inline-flex h-full w-full rounded-full bg-[#25D366] opacity-40 animate-ping pointer-events-none"></span>
+    
+    <!-- WhatsApp Icon -->
+    <i class="fa-brands fa-whatsapp text-2xl sm:text-3xl relative z-10"></i>
+
+    <!-- Tooltip on hover (desktop only) -->
+    <span class="hidden md:group-hover:inline-block absolute right-full mr-3.5 px-3 py-1.5 rounded-xl bg-[#131117] text-white text-xs font-semibold whitespace-nowrap shadow-xl border border-white/10 transition-opacity">
+      Consulter sur WhatsApp
+    </span>
+  </a>
+</aside>

@@ -1,0 +1,122 @@
+---
+import { getTestimonials } from '../lib/sanity';
+const TESTIMONIALS_DATA = await getTestimonials();
+---
+
+<section id="testimonials" class="py-16 md:py-24 bg-[#FAFBFD] border-y border-[#F0F3FA] overflow-hidden">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8 mb-12">
+    <div class="text-center max-w-2xl mx-auto">
+      <span class="text-[#FF8A00] font-semibold text-base sm:text-lg block mb-1">Avis & Retours d'Expérience</span>
+      <h2 class="text-2xl sm:text-4xl font-bold text-[#1F3E72] tracking-tight">
+        Témoignages : Leurs Vies Ont Changé<span class="text-[#FF8A00]">.</span>
+      </h2>
+      <p class="mt-3 text-sm sm:text-base text-[#8C8B91]">
+        12 témoignages authentiques reçus d'Afrique, d'Europe, des DOM-TOM et d'Amérique du Nord.
+      </p>
+    </div>
+  </div>
+
+  <!-- Infinite Auto-Scrolling Carousel Container with Gradient Edge Masks -->
+  <div class="relative w-full overflow-hidden marquee-wrapper">
+    <!-- Left & Right smooth fade masks -->
+    <div class="absolute left-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-r from-[#FAFBFD] to-transparent z-10 pointer-events-none" aria-hidden="true"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-12 sm:w-28 bg-gradient-to-l from-[#FAFBFD] to-transparent z-10 pointer-events-none" aria-hidden="true"></div>
+
+    <!-- Scrolling Track: Track duplicated for seamless 100% infinite loop -->
+    <div class="flex marquee-track">
+      <!-- First Sequence of 12 Cards -->
+      <div class="flex gap-6 shrink-0 marquee-content">
+        {TESTIMONIALS_DATA.map((t) => (
+          <div class="w-[310px] sm:w-[360px] bg-white p-6 sm:p-7 rounded-2xl border border-[#EEF2FF] shadow-[0_8px_25px_-8px_rgba(31,62,114,0.08)] flex flex-col justify-between shrink-0 select-none">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-1 text-[#FF8A00] text-xs">
+                  {Array.from({ length: t.stars }).map(() => (
+                    <i class="fa-solid fa-star"></i>
+                  ))}
+                </div>
+                <span class="px-2.5 py-0.5 rounded-full bg-[#EEF2FF] text-[#2949C6] text-[10px] font-bold">
+                  {t.service}
+                </span>
+              </div>
+              <p class="text-xs sm:text-sm text-[#1F3E72]/90 leading-relaxed italic line-clamp-4">
+                "{t.quote}"
+              </p>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-[#F0F3FA] flex items-center gap-3.5">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#1F3E72] to-[#2949C6] text-white flex items-center justify-center font-bold text-xs border-2 border-[#EEF2FF]">
+                {t.author.charAt(0)}
+              </div>
+              <div>
+                <h4 class="font-bold text-sm text-[#1F3E72]">{t.author}</h4>
+                <p class="text-[11px] text-[#8C8B91] flex items-center gap-1">
+                  <i class="fa-solid fa-location-dot text-[#FF8A00] text-[10px]"></i>
+                  <span>{t.location}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Second Sequence of 12 Cards (Exact Replica for Infinite Loop) -->
+      <div class="flex gap-6 shrink-0 marquee-content" aria-hidden="true">
+        {TESTIMONIALS_DATA.map((t) => (
+          <div class="w-[310px] sm:w-[360px] bg-white p-6 sm:p-7 rounded-2xl border border-[#EEF2FF] shadow-[0_8px_25px_-8px_rgba(31,62,114,0.08)] flex flex-col justify-between shrink-0 select-none">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-1 text-[#FF8A00] text-xs">
+                  {Array.from({ length: t.stars }).map(() => (
+                    <i class="fa-solid fa-star"></i>
+                  ))}
+                </div>
+                <span class="px-2.5 py-0.5 rounded-full bg-[#EEF2FF] text-[#2949C6] text-[10px] font-bold">
+                  {t.service}
+                </span>
+              </div>
+              <p class="text-xs sm:text-sm text-[#1F3E72]/90 leading-relaxed italic line-clamp-4">
+                "{t.quote}"
+              </p>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-[#F0F3FA] flex items-center gap-3.5">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#1F3E72] to-[#2949C6] text-white flex items-center justify-center font-bold text-xs border-2 border-[#EEF2FF]">
+                {t.author.charAt(0)}
+              </div>
+              <div>
+                <h4 class="font-bold text-sm text-[#1F3E72]">{t.author}</h4>
+                <p class="text-[11px] text-[#8C8B91] flex items-center gap-1">
+                  <i class="fa-solid fa-location-dot text-[#FF8A00] text-[10px]"></i>
+                  <span>{t.location}</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .marquee-track {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    animation: marqueeScroll 65s linear infinite;
+  }
+
+  .marquee-wrapper:hover .marquee-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes marqueeScroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-50% - 0.75rem));
+    }
+  }
+</style>

@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import FloatingWhatsApp from '../../components/FloatingWhatsApp.astro';
+import { getBlogPosts, getSiteSettings } from '../../lib/sanity';
+
+export async function getStaticPaths() {
+  const allPosts = await getBlogPosts();
+  return allPosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post, allPosts },
+  }));
+}
+
+const { post, allPosts } = Astro.props;
+const SITE_CONFIG = await getSiteSettings();
+
+// Related posts from same cluster or others
+const relatedPosts = allPosts
+  .filter((p) => p.slug !== post.slug)
+  .slice(0, 3);
+---
+
+<BaseLayout
+  title={`${post.title} - Médium Voyant Louis Adama`}
+  description={post.metaDescription}
+  image={post.image}
+  type="article"
+  datePublished="2026-10-01"
+>
+  <Navbar isInternalPage={true} />
+
+  <main class="pt-28 pb-20 bg-[#FAFBFD]">
+    <article class="max-w-4xl mx-auto px-5 sm:px-8">
+      
+      <!-- Breadcrumb -->
+      <nav class="flex items-center gap-2 text-xs text-[#8C8B91] mb-6">
+        <a href="/" class="hover:text-[#2949C6]">Accueil</a>
+        <span>/</span>
+        <a href="/blog" class="hover:text-[#2949C6]">Blog</a>
+        <span>/</span>
+        <span class="text-[#1F3E72] font-semibold truncate max-w-xs">{post.category}</span>
+      </nav>
+
+      <!-- Category & Date Badge -->
+      <div class="flex flex-wrap items-center gap-3 text-xs text-[#8C8B91] font-medium mb-4">
+        <span class="px-3 py-1 rounded-lg bg-[#2949C6] text-white font-bold text-xs">
+          {post.category}
+        </span>
+        <span>•</span>
+        <span><i class="fa-regular fa-calendar text-[#FF8A00] mr-1.5"></i>{post.date}</span>
+        <span>•</span>
+        <span><i class="fa-regular fa-clock text-[#2949C6] mr-1.5"></i>Lecture {post.readTime}</span>
+      </div>
+
+      <!-- Article Title (H1 strictly without Sakété) -->
+      <h1 class="text-2xl sm:text-4xl lg:text-[42px] font-extrabold text-[#1F3E72] tracking-tight leading-tight mb-8">
+        {post.title}
+      </h1>
+
+      <!-- Main Featured Image -->
+      <div class="relative rounded-2xl overflow-hidden mb-10 shadow-lg bg-[#131117] max-h-[460px]">
+        <picture>
+          <source srcset={post.image} type="image/webp" />
+          <img 
+            src={post.image} 
+            alt={post.title}
+            title={post.title}
+            width="800"
+            height="460"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+            class="w-full h-full object-cover"
+          />
+        </picture>
+      </div>
+
+      <!-- Key Takeaways Box (AEO & AI Search Readiness) -->
+      <div class="mb-10 p-6 rounded-2xl bg-[#EEF2FF]/70 border border-[#2949C6]/20">
+        <h2 class="text-base font-bold text-[#1F3E72] mb-3 flex items-center gap-2">
+          <i class="fa-solid fa-bookmark text-[#2949C6]"></i>
+          <span>Points Clés Retenus Par la Tradition</span>
+        </h2>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm text-[#1F3E72]">
+          {post.keyTakeaways.map((point) => (
+            <li class="flex items-start gap-2">
+              <i class="fa-solid fa-circle-check text-[#25D366] text-xs mt-1 shrink-0"></i>
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Content Paragraphs -->
+      <div class="bg-white p-7 sm:p-10 rounded-2xl border border-[#F0F3FA] shadow-sm text-sm sm:text-base text-[#1F3E72]/90 leading-relaxed space-y-6">
+        {post.content.map((p) => (
+          <p>{p}</p>
+        ))}
+
+        <!-- Inline Spiritual Advice Box -->
+        <div class="my-8 p-6 rounded-xl bg-[#FAFBFD] border-l-4 border-[#FF8A00]">
+          <h3 class="font-bold text-sm sm:text-base text-[#1F3E72] mb-1">
+            Le Conseil du Grand Médium Voyant Louis Adama :
+          </h3>
+          <p class="text-xs sm:text-sm text-[#8C8B91] leading-relaxed">
+            « Ne laissez jamais un blocage financier ou une déchirure amoureuse s'enraciner avec le temps. Plus l'intervention spirituelle est rapide, plus la délivrance est nette et lumineuse. »
+          </p>
+        </div>
+      </div>
+
+      <!-- Article Action Banner (Direct WhatsApp) -->
+      <div class="mt-10 p-8 rounded-2xl bg-gradient-to-r from-[#131117] to-[#1F3E72] text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+        <div>
+          <span class="text-xs uppercase tracking-widest text-[#FF8A00] font-bold">Consultation Personnalisée</span>
+          <h3 class="text-xl sm:text-2xl font-bold mt-1">Besoin d'un Rituel Sur-Mesure ?</h3>
+          <p class="text-xs sm:text-sm text-white/75 mt-1 max-w-md">
+            Échangez directement avec le Maître Louis Adama sur WhatsApp pour un diagnostic précis de votre situation.
+          </p>
+        </div>
+        <a 
+          href={`https://wa.me/${SITE_CONFIG.phoneApi}?text=${encodeURIComponent(`Bonjour Maître Louis Adama, j'ai lu votre article "${post.title}" et je sollicite vos lumières.`)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-8 py-3.5 rounded-xl bg-gradient-to-r from-[#25D366] to-[#1DA851] hover:opacity-95 text-white font-bold text-sm flex items-center gap-2.5 shadow-whatsapp-btn whitespace-nowrap"
+        >
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span>Nous Contacter</span>
+        </a>
+      </div>
+
+      <!-- Related Guides (Semantic Silo / Internal Linking) -->
+      <div class="mt-16 pt-12 border-t border-[#F0F3FA]">
+        <div class="flex items-center justify-between mb-8">
+          <h3 class="text-xl font-bold text-[#1F3E72]">Guides Complémentaires</h3>
+          <a href="/blog" class="text-xs font-bold text-[#2949C6] hover:underline">Voir les 20 guides</a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {relatedPosts.map((r) => (
+            <a 
+              href={`/blog/${r.slug}`}
+              class="group bg-white p-4 rounded-xl border border-[#F4F6FB] hover:border-[#EEF2FF] hover:shadow-card-active transition-all block"
+            >
+              <div class="h-36 rounded-lg overflow-hidden mb-3 bg-[#F1F5FF]">
+                <picture>
+                  <source srcset={r.image} type="image/webp" />
+                  <img 
+                    src={r.image} 
+                    alt={r.title}
+                    title={r.title}
+                    width="280"
+                    height="144"
+                    loading="lazy"
+                    decoding="async"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </picture>
+              </div>
+              <span class="text-[10px] font-bold text-[#FF8A00] block mb-1">{r.category}</span>
+              <h4 class="text-xs sm:text-sm font-bold text-[#1F3E72] group-hover:text-[#2949C6] transition-colors line-clamp-2 leading-snug">
+                {r.title}
+              </h4>
+            </a>
+          ))}
+        </div>
+      </div>
+
+    </article>
+  </main>
+
+  <Footer />
+  <FloatingWhatsApp />
+</BaseLayout>

@@ -1,0 +1,109 @@
+---
+import { getValues, getSiteSettings } from '../lib/sanity';
+const VALUES_DATA = await getValues();
+const SITE_CONFIG = await getSiteSettings();
+---
+
+<section id="values" class="py-16 md:py-24 bg-white">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+      
+      <!-- Left Column: Sacred Light Arch Photo -->
+      <div class="lg:col-span-6 flex justify-center lg:justify-start">
+        <div class="arch-frame-light w-full max-w-[440px] h-[470px] sm:h-[530px] relative group bg-[#F5F8FF]">
+          <picture>
+            <source srcset="/images/hero_arch/couvent%20marabout%20(4).webp" type="image/webp" />
+            <img 
+              src="/images/hero_arch/couvent%20marabout%20(4).webp" 
+              alt="Couvent traditionnel du Grand Médium Voyant Africain Louis Adama" 
+              title="Sanctuaire sacré et transmissions ancestrales du Maître Louis Adama"
+              width="440"
+              height="530"
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+            />
+          </picture>
+        </div>
+      </div>
+
+      <!-- Right Column: Presentation, Title and 4 Interactive Accordions -->
+      <div class="lg:col-span-6">
+        <span class="text-[#FF8A00] font-semibold text-base sm:text-lg block mb-1">Nos Valeurs & Autorité</span>
+        <h2 class="text-2xl sm:text-4xl font-bold text-[#1F3E72] tracking-tight">
+          {SITE_CONFIG.valuesTitle}<span class="text-[#FF8A00]">.</span>
+        </h2>
+        <p class="mt-4 text-[#8C8B91] text-sm sm:text-base leading-relaxed">
+          {SITE_CONFIG.valuesDescription}
+        </p>
+
+        <!-- Accordion List (Zero AI cliche icons, using ShieldCheck, Eye, Lock, Comments) -->
+        <div class="mt-8 space-y-4" id="valueAccordion">
+          {VALUES_DATA.map((item, index) => (
+            <div 
+              class={`accordion-item rounded-xl border border-[#F0F3FA] bg-white p-4 sm:p-5 transition-all duration-300 cursor-pointer ${item.activeByDefault ? 'active' : ''}`}
+              data-index={index}
+            >
+              <div class="flex items-center justify-between gap-4">
+                <div class="flex items-center gap-4">
+                  <div class="w-9 h-9 rounded-lg bg-[#EEF2FF] text-[#2949C6] flex items-center justify-center shrink-0">
+                    <i class={`fa-solid ${item.icon} text-sm`}></i>
+                  </div>
+                  <h3 class="font-bold text-sm sm:text-base text-[#1F3E72]">{item.title}</h3>
+                </div>
+                <div class="w-7 h-7 rounded-md bg-[#EEF2FF] text-[#2949C6] flex items-center justify-center shrink-0">
+                  <i class={`accordion-icon fa-solid ${item.activeByDefault ? 'fa-caret-up' : 'fa-caret-down'} text-xs transition-transform`}></i>
+                </div>
+              </div>
+              <div class="accordion-content">
+                <p class="pt-4 text-xs sm:text-sm text-[#8C8B91] leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Ultra-short CTA Button -->
+        <div class="mt-8">
+          <a 
+            href={`https://wa.me/${SITE_CONFIG.phoneApi}?text=${encodeURIComponent('Bonjour Maître Louis Adama, je souhaite une consultation de voyance.')}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center gap-2 px-7 py-3 rounded-xl bg-gradient-to-r from-[#3858D6] to-[#2949C6] hover:from-[#25D366] hover:to-[#1DA851] text-white font-bold text-sm shadow-blue-btn transition transform hover:-translate-y-0.5 active:translate-y-0"
+          >
+            <i class="fa-brands fa-whatsapp text-lg"></i>
+            <span>Nous Contacter</span>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  function setupAccordion() {
+    const items = document.querySelectorAll('#valueAccordion .accordion-item');
+    items.forEach((item) => {
+      item.addEventListener('click', () => {
+        const wasActive = item.classList.contains('active');
+        items.forEach(el => {
+          el.classList.remove('active');
+          const icon = el.querySelector('.accordion-icon');
+          if (icon) icon.className = 'accordion-icon fa-solid fa-caret-down text-xs transition-transform';
+        });
+
+        if (!wasActive) {
+          item.classList.add('active');
+          const icon = item.querySelector('.accordion-icon');
+          if (icon) icon.className = 'accordion-icon fa-solid fa-caret-up text-xs transition-transform';
+        }
+      });
+    });
+  }
+
+  setupAccordion();
+  document.addEventListener('astro:page-load', setupAccordion);
+</script>

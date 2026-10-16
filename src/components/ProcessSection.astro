@@ -1,0 +1,67 @@
+---
+import { PROCESS_DATA, SITE_CONFIG } from '../data/siteData';
+---
+
+<section id="process" class="py-16 md:py-24 bg-[#FAFBFD] border-t border-[#F0F3FA]">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <span class="text-[#FF8A00] font-semibold text-base sm:text-lg block mb-1">Comment Ça Marche</span>
+      <h2 class="text-2xl sm:text-4xl font-bold text-[#1F3E72] tracking-tight">
+        Votre Accompagnement en 4 Étapes Simples<span class="text-[#FF8A00]">.</span>
+      </h2>
+      <p class="mt-3 text-sm sm:text-base text-[#8C8B91]">
+        Un protocole spirituel confidentiel, rigoureux et transparent pour résoudre vos difficultés sans déplacement obligatoire.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {PROCESS_DATA.map((step) => (
+        <div class={`relative bg-white p-7 rounded-2xl border transition-all duration-300 group flex flex-col justify-between ${
+          step.active 
+            ? 'border-[#EEF2FF] shadow-card-active' 
+            : 'border-[#EEF2FF] hover:shadow-card-active'
+        }`}>
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors ${
+                step.active 
+                  ? 'bg-[#2949C6] text-white shadow-blue-btn' 
+                  : 'bg-[#EEF2FF] group-hover:bg-[#2949C6] text-[#2949C6] group-hover:text-white'
+              }`}>
+                <i class={`fa-solid ${step.icon} text-xl`}></i>
+              </div>
+              <span class={`text-3xl font-extrabold transition-colors ${
+                step.active ? 'text-[#FF8A00]/30' : 'text-[#EEF2FF] group-hover:text-[#FF8A00]/25'
+              }`}>
+                {step.number}
+              </span>
+            </div>
+            <h3 class="text-lg font-bold text-[#1F3E72] mb-2">{step.title}</h3>
+            <p class="text-xs sm:text-sm text-[#8C8B91] leading-relaxed">
+              {step.description}
+            </p>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-[#F0F3FA] flex items-center justify-between">
+            <span class="text-[11px] font-bold text-[#2949C6] uppercase tracking-wider">Étape {step.number}</span>
+            <i class="fa-solid fa-arrow-right text-[#FF8A00] text-xs"></i>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Center Ultra-Short CTA -->
+    <div class="mt-12 text-center">
+      <a 
+        href={`https://wa.me/${SITE_CONFIG.phoneApi}?text=${encodeURIComponent('Bonjour Maître Louis Adama, je souhaite démarrer mon accompagnement spirituel.')}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl bg-gradient-to-r from-[#3858D6] to-[#2949C6] hover:from-[#25D366] hover:to-[#1DA851] text-white font-bold text-sm shadow-blue-btn transition transform hover:-translate-y-0.5"
+      >
+        <i class="fa-brands fa-whatsapp text-lg"></i>
+        <span>Nous Contacter</span>
+      </a>
+    </div>
+
+  </div>
+</section>

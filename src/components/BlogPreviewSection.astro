@@ -1,0 +1,86 @@
+---
+import { getBlogPosts } from '../lib/sanity';
+
+const allPosts = await getBlogPosts();
+const featuredPosts = allPosts.filter(p => p.featured);
+const previewPosts = featuredPosts.length >= 3
+  ? featuredPosts.slice(0, 3)
+  : [allPosts[0], allPosts[10] || allPosts[1], allPosts[15] || allPosts[2]].filter(Boolean);
+---
+
+<section id="blog" class="py-16 md:py-24 bg-[#FAFBFD] border-t border-[#F0F3FA]">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+      <div>
+        <span class="text-[#FF8A00] font-semibold text-base sm:text-lg block mb-1">Cocon Sémantique & Savoirs Sacrés</span>
+        <h2 class="text-2xl sm:text-4xl font-bold text-[#1F3E72] tracking-tight">
+          Guides & Enseignements Spirituels<span class="text-[#FF8A00]">.</span>
+        </h2>
+      </div>
+      <a 
+        href="/blog" 
+        class="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#2949C6] hover:text-[#FF8A00] transition-colors"
+      >
+        <span>Consulter les 20 guides</span>
+        <i class="fa-solid fa-arrow-right text-xs"></i>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {previewPosts.map((post) => (
+        <article class={`group rounded-2xl p-4 bg-white transition-all duration-300 flex flex-col justify-between ${
+          post.featured 
+            ? 'shadow-card-active border border-[#EEF2FF]' 
+            : 'hover:shadow-card-active border border-[#F4F6FB] hover:border-[#EEF2FF]'
+        }`}>
+          <div>
+            <div class="relative rounded-xl overflow-hidden h-52 mb-4 bg-[#F1F5FF]">
+              <picture>
+                <source srcset={post.image} type="image/webp" />
+                <img 
+                  src={post.image} 
+                  alt={post.title}
+                  title={post.title}
+                  width="400"
+                  height="208"
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </picture>
+              <span class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-[#131117]/85 backdrop-blur-sm text-white text-[11px] font-bold">
+                {post.category}
+              </span>
+            </div>
+
+            <div class="px-1">
+              <div class="flex items-center gap-3 text-xs text-[#8C8B91] font-medium mb-2">
+                <span><i class="fa-regular fa-calendar text-[#FF8A00] mr-1.5"></i>{post.date}</span>
+                <span>•</span>
+                <span><i class="fa-regular fa-clock text-[#2949C6] mr-1.5"></i>{post.readTime}</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-bold text-[#1F3E72] group-hover:text-[#2949C6] transition-colors leading-snug line-clamp-2">
+                <a href={`/blog/${post.slug}`}>
+                  {post.title}
+                </a>
+              </h3>
+              <p class="mt-2 text-xs text-[#8C8B91] leading-relaxed line-clamp-3">
+                {post.excerpt}
+              </p>
+            </div>
+          </div>
+
+          <div class="px-1 mt-4 pt-3 border-t border-[#F0F3FA] flex items-center justify-between">
+            <a 
+              href={`/blog/${post.slug}`} 
+              class="text-xs font-bold text-[#2949C6] group-hover:text-[#FF8A00] transition-colors inline-flex items-center gap-2"
+            >
+              <span>Lire le guide</span>
+              <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

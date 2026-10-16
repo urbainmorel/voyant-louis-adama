@@ -1,0 +1,107 @@
+---
+import { getSiteSettings } from '../lib/sanity';
+const SITE_CONFIG = await getSiteSettings();
+---
+
+<footer class="bg-[#0D0B11] text-white/80 pt-12 pb-8 border-t border-white/10">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    
+    <!-- Main Footer Grid (Clean & Balanced) -->
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12 pb-10">
+      
+      <!-- Brand & Simple Contact Column -->
+      <div class="md:col-span-5 space-y-4">
+        <a href="/#hero" class="relative inline-flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 p-1.5 flex items-center justify-center group-hover:border-[#E5A93C]/40 transition-colors">
+            <img src="/logo.svg" alt="Logo Cauris Sacré" width="36" height="36" class="w-full h-full object-contain" />
+          </div>
+          <div>
+            <span class="text-white font-extrabold text-xl tracking-tight block">Médium Louis Adama</span>
+            <span class="text-[11px] text-[#A09FA7] uppercase tracking-wider block">Voyance & Spiritualité</span>
+          </div>
+        </a>
+        
+        <p class="text-xs sm:text-sm text-[#A09FA7] leading-relaxed max-w-sm">
+          Grand Maître Spirituel et Voyant Africain. Rituels traditionnels de prospérité, retour affectif, chance et protection spirituelle.
+        </p>
+
+        <!-- Simple, Elegant Contact Info -->
+        <div class="pt-2 space-y-2 text-xs text-[#A09FA7]">
+          <div class="flex items-center gap-2.5">
+            <i class="fa-brands fa-whatsapp text-sm text-[#25D366]"></i>
+            <span>WhatsApp :</span>
+            <a 
+              href={`https://wa.me/${SITE_CONFIG.phoneApi}?text=${encodeURIComponent('Bonjour Maître Louis Adama, je souhaite une consultation confidentielle.')}`} 
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-white hover:text-[#25D366] font-semibold transition-colors"
+            >
+              {SITE_CONFIG.phoneDisplay}
+            </a>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <i class="fa-solid fa-phone text-xs text-white/70"></i>
+            <span>Appel direct :</span>
+            <a href={`tel:${SITE_CONFIG.phoneRaw}`} class="text-white hover:text-white/80 font-semibold transition-colors">
+              {SITE_CONFIG.phoneDisplay}
+            </a>
+          </div>
+          <div class="flex items-center gap-2.5">
+            <i class="fa-solid fa-location-dot text-xs text-[#FF8A00]"></i>
+            <span>Sakété, Bénin — Consultations partout dans le monde</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation Links Columns -->
+      <div class="md:col-span-7 grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8">
+        
+        <!-- Services Column -->
+        <div>
+          <h4 class="font-bold text-xs uppercase tracking-wider text-white mb-3">Rituels & Services</h4>
+          <ul class="space-y-2 text-xs text-[#A09FA7]">
+            <li><a href="/#residences" class="hover:text-white transition">Rituel de Richesse</a></li>
+            <li><a href="/#residences" class="hover:text-white transition">Chance aux Affaires</a></li>
+            <li><a href="/#residences" class="hover:text-white transition">Retour Affectif</a></li>
+            <li><a href="/#residences" class="hover:text-white transition">Éloignement Rivaux</a></li>
+            <li><a href="/#residences" class="hover:text-white transition">Purification & Bains</a></li>
+            <li><a href="/#residences" class="hover:text-white transition">Haute Protection</a></li>
+          </ul>
+        </div>
+
+        <!-- Discovery & Guides Column -->
+        <div>
+          <h4 class="font-bold text-xs uppercase tracking-wider text-white mb-3">Découvrir</h4>
+          <ul class="space-y-2 text-xs text-[#A09FA7]">
+            <li><a href="/#values" class="hover:text-white transition">Nos Valeurs</a></li>
+            <li><a href="/#gallery" class="hover:text-white transition">Galerie Photos</a></li>
+            <li><a href="/blog" class="hover:text-[#88A0FF] font-medium transition">Guides & Blog</a></li>
+            <li><a href="/#testimonials" class="hover:text-white transition">Avis Clients</a></li>
+            <li><a href="/#faq" class="hover:text-white transition">Questions fréquentes</a></li>
+          </ul>
+        </div>
+
+        <!-- Geographic Reach Column -->
+        <div class="col-span-2 sm:col-span-1">
+          <h4 class="font-bold text-xs uppercase tracking-wider text-white mb-3">Interventions</h4>
+          <ul class="space-y-2 text-xs text-[#A09FA7]">
+            <li>Afrique de l'Ouest</li>
+            <li>Afrique Centrale</li>
+            <li>Europe & Diaspora</li>
+            <li>Amérique du Nord</li>
+            <li class="pt-1 text-[#25D366] font-medium">Disponibilité 7j/7</li>
+          </ul>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#8E8D95]">
+      <p>© {new Date().getFullYear()} Médium Louis Adama. Tous droits réservés.</p>
+      <p class="text-xs text-[#8E8D95]">Confidentialité absolue & Secret professionnel garanti</p>
+    </div>
+
+  </div>
+</footer>

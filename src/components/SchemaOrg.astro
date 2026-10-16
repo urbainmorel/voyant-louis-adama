@@ -1,0 +1,128 @@
+---
+export interface Props {
+  type?: 'home' | 'article' | 'service';
+  title?: string;
+  description?: string;
+  url?: string;
+  image?: string;
+  datePublished?: string;
+  faqList?: Array<{ question: string; answer: string }>;
+}
+
+const {
+  type = 'home',
+  title = "Médium Voyant Louis Adama - Rituels de Richesse, Prospérité & Retour Affectif",
+  description = "Grand Médium Voyant spirituel africain. Spécialiste des rituels de richesse, de prospérité financière, de chance aux affaires, du retour affectif et de l'éloignement des rivaux. Travaux à distance dans toute l'Afrique.",
+  url = "https://www.medium-louis-adama.com/",
+  image = "https://www.medium-louis-adama.com/images/hero_arch/rituel%20richesse%20prosperite%20(1).webp",
+  datePublished,
+  faqList = [
+    {
+      question: "En quoi consiste un rituel de richesse et de prospérité avec un maître spirituel africain ?",
+      answer: "Le rituel de richesse purifie les voies financières, neutralise les blocages invisibles qui freinent vos revenus et attire magnétiquement la prospérité, la chance commerciale et l'abondance matérielle."
+    },
+    {
+      question: "Les rituels à distance sont-ils efficaces au Cameroun, en RDC ou en Côte d'Ivoire ?",
+      answer: "Oui, parfaitement. La vibration spirituelle s'effectue sur les noms, prénoms et photos avec une puissance égale à celle d'une présence au sanctuaire."
+    },
+    {
+      question: "Le rituel de retour affectif éloigne-t-il également une rivale ?",
+      answer: "Oui. Le travail combine la reconquête du cœur de l'être aimé avec une neutralisation totale des rivales et des influences extérieures néfastes."
+    },
+    {
+      question: "Y a-t-il un danger ou des conséquences négatives aux rituels ?",
+      answer: "Aucun danger ni choc en retour. Le Médium Voyant Louis Adama utilise des forces spirituelles pures, des plantes sacrées et des bénédictions ancestrales protectrices."
+    }
+  ]
+} = Astro.props;
+
+const professionalServiceSchema = {
+  "@type": "ProfessionalService",
+  "@id": "https://www.medium-louis-adama.com/#voyant",
+  "name": "Médium Voyant Louis Adama - Rituels de Richesse, Prospérité & Retour Affectif",
+  "description": "Grand Médium Voyant spirituel africain. Spécialiste des rituels de richesse, de prospérité financière, de chance aux affaires, du retour affectif et de l'éloignement des rivaux. Travaux à distance dans toute l'Afrique.",
+  "url": "https://www.medium-louis-adama.com/",
+  "telephone": "+2290196960792",
+  "priceRange": "$$",
+  "image": "https://www.medium-louis-adama.com/images/hero_arch/rituel%20richesse%20prosperite%20(1).webp",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Sakété",
+    "addressRegion": "Plateau",
+    "addressCountry": "BJ"
+  },
+  "areaServed": [
+    { "@type": "Country", "name": "Cameroun" },
+    { "@type": "Country", "name": "Congo" },
+    { "@type": "Country", "name": "Gabon" },
+    { "@type": "Country", "name": "République démocratique du Congo" },
+    { "@type": "Country", "name": "Burkina Faso" },
+    { "@type": "Country", "name": "Côte d'Ivoire" },
+    { "@type": "Country", "name": "Mali" },
+    { "@type": "Country", "name": "Niger" },
+    { "@type": "Country", "name": "Sénégal" },
+    { "@type": "Country", "name": "Bénin" }
+  ],
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+    "opens": "07:00",
+    "closes": "23:00"
+  },
+  "sameAs": [
+    "https://wa.me/2290196960792"
+  ]
+};
+
+const faqSchema = faqList && faqList.length > 0 ? {
+  "@type": "FAQPage",
+  "@id": `${url}#faq`,
+  "mainEntity": faqList.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+} : null;
+
+const articleSchema = type === 'article' ? {
+  "@type": "Article",
+  "@id": `${url}#article`,
+  "headline": title,
+  "description": description,
+  "image": image,
+  "datePublished": datePublished || "2026-10-01",
+  "dateModified": datePublished || "2026-10-15",
+  "author": {
+    "@type": "Person",
+    "name": "Médium Voyant Louis Adama",
+    "jobTitle": "Grand Maître Spirituel Africain",
+    "url": "https://www.medium-louis-adama.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Médium Voyant Louis Adama",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://www.medium-louis-adama.com/images/hero_arch/rituel%20richesse%20prosperite%20(1).webp"
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": url
+  }
+} : null;
+
+const graph = [professionalServiceSchema];
+if (faqSchema) graph.push(faqSchema as any);
+if (articleSchema) graph.push(articleSchema as any);
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": graph
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

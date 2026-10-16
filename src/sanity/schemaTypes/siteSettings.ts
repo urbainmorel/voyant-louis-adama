@@ -1,0 +1,120 @@
+import { defineType, defineField } from 'sanity';
+
+export const siteSettingsType = defineType({
+  name: 'siteSettings',
+  title: 'Paramètres & Page d’Accueil',
+  type: 'document',
+  groups: [
+    { name: 'general', title: 'Identité & Contact', default: true },
+    { name: 'hero', title: 'Section Hero (Accueil)' },
+    { name: 'sections', title: 'Textes des Sections' },
+  ],
+  fields: [
+    defineField({
+      name: 'name',
+      title: 'Nom Officiel du Médium',
+      type: 'string',
+      group: 'general',
+      initialValue: 'Médium Voyant Louis Adama',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'titleSuffix',
+      title: 'Titre / Qualification',
+      type: 'string',
+      group: 'general',
+      initialValue: 'Grand Maître Spirituel Africain',
+    }),
+    defineField({
+      name: 'phoneDisplay',
+      title: 'Numéro de téléphone affiché',
+      type: 'string',
+      group: 'general',
+      initialValue: '+229 01 96 96 07 92',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'phoneRaw',
+      title: 'Numéro pour appel direct (format tel:)',
+      type: 'string',
+      group: 'general',
+      initialValue: '+2290196960792',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'phoneApi',
+      title: 'Numéro WhatsApp API (sans + ni espaces)',
+      type: 'string',
+      group: 'general',
+      initialValue: '2290196960792',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'locationDisplay',
+      title: 'Adresse / Localisation affichée',
+      type: 'string',
+      group: 'general',
+      initialValue: 'Sakété, Bénin (Rayonnement Panafricain & Diaspora)',
+    }),
+    defineField({
+      name: 'siteUrl',
+      title: 'URL officielle du site',
+      type: 'url',
+      group: 'general',
+      initialValue: 'https://www.medium-louis-adama.com',
+    }),
+    defineField({
+      name: 'heroBadge',
+      title: 'Badge au-dessus du titre Hero',
+      type: 'string',
+      group: 'hero',
+      initialValue: 'Grand Maître Spirituel et Voyant Africain – Consultations 7j/7',
+    }),
+    defineField({
+      name: 'heroTitle',
+      title: 'Grand Titre H1 (Hero)',
+      type: 'string',
+      group: 'hero',
+      initialValue: 'Richesse, Prospérité Financière, Chance et Retour Affectif',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'heroSubtitle',
+      title: 'Sous-titre / Accroche Hero',
+      type: 'text',
+      rows: 4,
+      group: 'hero',
+      initialValue:
+        "Finances bloquées, commerce en difficulté ou souffrance amoureuse causée par une rivale ? Le grand Médium Voyant Louis Adama met la puissance des rituels traditionnels africains au service de votre réussite financière, de votre chance et de l'harmonie de votre couple.",
+    }),
+    defineField({
+      name: 'valuesTitle',
+      title: 'Titre de la section Valeurs & Autorité',
+      type: 'string',
+      group: 'sections',
+      initialValue: "Médium Voyant Louis Adama : La Force Spirituelle d'un Grand Maître Africain",
+    }),
+    defineField({
+      name: 'valuesDescription',
+      title: 'Texte de présentation (Section Valeurs)',
+      type: 'text',
+      rows: 4,
+      group: 'sections',
+      initialValue:
+        "Héritier d'une prestigieuse lignée de voyants et d'initiés, le Médium Voyant Louis Adama incarne la tradition spirituelle africaine la plus rigoureuse. Recommandé par des milliers de personnes au Cameroun, en Côte d'Ivoire, au Gabon, au Sénégal, en RDC et dans toute la diaspora, il intervient avec précision pour débloquer votre destinée financière et sécuriser votre bonheur affectif.",
+    }),
+    defineField({
+      name: 'countries',
+      title: 'Pays affichés dans la bannière',
+      type: 'array',
+      group: 'sections',
+      of: [{ type: 'string' }],
+    }),
+  ],
+  preview: {
+    select: {
+      title: 'name',
+      subtitle: 'phoneDisplay',
+    },
+  },
+});

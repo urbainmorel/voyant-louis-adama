@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import CountriesBanner from '../components/CountriesBanner.astro';
+import ServicesGrid from '../components/ServicesGrid.astro';
+import ValuesSection from '../components/ValuesSection.astro';
+import GallerySection from '../components/GallerySection.astro';
+import BlogPreviewSection from '../components/BlogPreviewSection.astro';
+import TestimonialsSection from '../components/TestimonialsSection.astro';
+import FaqSection from '../components/FaqSection.astro';
+import ActionBanner from '../components/ActionBanner.astro';
+import Footer from '../components/Footer.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+import { getFaqs } from '../lib/sanity';
+
+const faqData = await getFaqs();
+const homeFaq = faqData.map(f => ({ question: f.question, answer: f.answer }));
+---
+
+<BaseLayout
+  title="Médium Voyant Louis Adama - Rituels de Richesse, Prospérité & Retour Affectif d'Afrique"
+  description="Grand Médium Voyant spirituel africain. Spécialiste des rituels de richesse, de prospérité financière, de chance aux affaires, du retour affectif et de l'éloignement des rivaux. Travaux à distance dans toute l'Afrique."
+  type="home"
+  faqList={homeFaq}
+>
+  <!-- Navigation Header -->
+  <Navbar />
+
+  <main id="main-content">
+    <!-- Hero Section -->
+    <Hero />
+
+    <!-- 9 Priority Countries Banner -->
+    <CountriesBanner />
+
+    <!-- 6 Major Services Grid -->
+    <ServicesGrid />
+
+    <!-- Values & Spiritual Authority Section -->
+    <ValuesSection />
+
+    <!-- Photo & Video Gallery Section -->
+    <GallerySection />
+
+    <!-- Blog & Semantic Silo Preview -->
+    <BlogPreviewSection />
+
+    <!-- Client Testimonials from Cameroun, Côte d'Ivoire, Gabon -->
+    <TestimonialsSection />
+
+    <!-- Native FAQ Section -->
+    <FaqSection />
+
+    <!-- WhatsApp Action Hub (No classic email forms) -->
+    <ActionBanner />
+  </main>
+
+  <!-- Global Footer -->
+  <Footer />
+
+  <!-- Strictly Only WhatsApp Floating Button on Mobile -->
+  <FloatingWhatsApp />
+</BaseLayout>

@@ -1,0 +1,182 @@
+---
+import SchemaOrg from '../components/SchemaOrg.astro';
+import { getSiteSettings } from '../lib/sanity';
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonicalUrl?: string;
+  type?: 'home' | 'article' | 'service';
+  datePublished?: string;
+  faqList?: Array<{ question: string; answer: string }>;
+}
+
+const SITE_CONFIG = await getSiteSettings();
+
+const {
+  title = "Médium Voyant Louis Adama - Rituels de Richesse, Prospérité Financière & Retour Affectif",
+  description = "Grand Médium Voyant spirituel africain. Spécialiste des rituels de richesse, de prospérité financière, de chance aux affaires, du retour affectif et de l'éloignement des rivaux. Travaux à distance garantis sans danger.",
+  image = "/images/hero_arch/rituel%20richesse%20prosperite%20(1).webp",
+  canonicalUrl = Astro.url.href,
+  type = 'home',
+  datePublished,
+  faqList,
+} = Astro.props;
+
+const absoluteImageUrl = image.startsWith('http') ? image : `${SITE_CONFIG.siteUrl}${image}`;
+---
+
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Primary Meta Tags -->
+  <title>{title}</title>
+  <meta name="title" content={title} />
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content={type === 'article' ? 'article' : 'website'} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={absoluteImageUrl} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="fr_FR" />
+  <meta property="og:site_name" content={SITE_CONFIG.name} />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={canonicalUrl} />
+  <meta property="twitter:title" content={title} />
+  <meta property="twitter:description" content={description} />
+  <meta property="twitter:image" content={absoluteImageUrl} />
+
+  <!-- Preconnect & Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Schema.org JSON-LD -->
+  <SchemaOrg 
+    type={type} 
+    title={title} 
+    description={description} 
+    url={canonicalUrl} 
+    image={absoluteImageUrl} 
+    datePublished={datePublished}
+    faqList={faqList}
+  />
+
+  <style is:global>
+    * {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #1F3E72;
+      background-color: #FFFFFF;
+      overflow-x: hidden;
+    }
+
+    /* Hero Dark Background with Warm Glow & Topographic Concentric Lines */
+    .hero-bg {
+      background-color: #131117;
+      background-image: 
+        radial-gradient(circle at 18% 22%, rgba(255, 255, 255, 0.09) 0%, rgba(255, 146, 43, 0.04) 22%, transparent 52%),
+        radial-gradient(circle at 75% 30%, rgba(41, 73, 198, 0.12) 0%, transparent 55%);
+      position: relative;
+    }
+
+    /* Contemporary Sacred Frame Geometry (Smooth Rounded Corners, No Arc) */
+    .arch-frame-hero {
+      border-radius: 28px;
+      border: 6px solid #2A2831;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
+    }
+
+    .arch-frame-light {
+      border-radius: 28px;
+      border: 6px solid #F0F4FD;
+      overflow: hidden;
+      box-shadow: 0 24px 48px -12px rgba(31, 62, 114, 0.16);
+    }
+
+    /* Glowing Amber Sphere behind Hero Title */
+    .orange-sphere {
+      width: 46px;
+      height: 46px;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, #FFB03A 0%, #F76B1C 100%);
+      box-shadow: 0 8px 24px rgba(247, 107, 28, 0.45);
+    }
+
+    /* Accordion smooth transition */
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+      opacity: 0;
+    }
+
+    .accordion-item.active .accordion-content {
+      max-height: 280px;
+      opacity: 1;
+    }
+
+    .accordion-item.active {
+      box-shadow: 0 20px 42px -10px rgba(136, 160, 255, 0.25);
+      border-color: rgba(238, 242, 255, 0.9);
+    }
+
+    /* FAQ Accordion smooth transition */
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+      opacity: 0;
+    }
+
+    .faq-item.active .faq-content {
+      max-height: 280px;
+      opacity: 1;
+    }
+
+    .faq-item.active {
+      border-color: #2949C6;
+      box-shadow: 0 16px 36px -10px rgba(41, 73, 198, 0.12);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0D0C10;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2949C6;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="selection:bg-homyz-blue selection:text-white antialiased">
+  <slot />
+</body>
+</html>

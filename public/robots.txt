@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.medium-louis-adama.com/sitemap-index.xml

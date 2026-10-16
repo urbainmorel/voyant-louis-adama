@@ -1,0 +1,163 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import FloatingWhatsApp from '../../components/FloatingWhatsApp.astro';
+import { getBlogPosts, getSiteSettings } from '../../lib/sanity';
+
+const BLOG_POSTS = await getBlogPosts();
+const SITE_CONFIG = await getSiteSettings();
+
+const clusters = [
+  { id: 'all', name: `Tous les Guides (${BLOG_POSTS.length})` },
+  { id: 'richesse', name: 'Richesse & Prospérité (P1)' },
+  { id: 'amour', name: 'Retour Affectif & Couple (P2)' },
+  { id: 'protection-autorite', name: 'Protection & Autorité' }
+];
+---
+
+<BaseLayout
+  title="Blog & Savoirs Spirituels d'Afrique - Médium Voyant Louis Adama"
+  description="Consultez les 20 guides initiatiques du Médium Voyant Louis Adama : rituels de richesse, prospérité commerciale, retour affectif rapide, purification et protection."
+  type="home"
+>
+  <Navbar isInternalPage={true} />
+
+  <main class="pt-28 pb-20 bg-[#FAFBFD]">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      
+      <!-- Header -->
+      <div class="max-w-3xl mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#EEF2FF] text-[#2949C6] text-xs font-bold mb-4">
+          <i class="fa-solid fa-book-open"></i>
+          <span>Cocon Sémantique Initiatique</span>
+        </div>
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-[#1F3E72] tracking-tight leading-tight">
+          Guides et Enseignements Spirituels d'Afrique
+        </h1>
+        <p class="mt-4 text-sm sm:text-base text-[#8C8B91] leading-relaxed">
+          Découvrez 20 dossiers complets rédigés selon la pure tradition ésotérique africaine pour vous éclairer sur les rituels de richesse, la réussite en affaires, la reconquête sentimentale et la protection mystique.
+        </p>
+      </div>
+
+      <!-- Cluster Filter Pills -->
+      <div class="flex flex-wrap items-center gap-2.5 mb-10" id="blogFilterContainer">
+        {clusters.map((c) => (
+          <button 
+            data-cluster={c.id} 
+            class={`blog-cluster-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer ${
+              c.id === 'all' 
+                ? 'bg-[#2949C6] text-white shadow-blue-btn' 
+                : 'bg-white border border-[#EEF2FF] text-[#1F3E72] hover:bg-[#EEF2FF]'
+            }`}
+          >
+            {c.name}
+          </button>
+        ))}
+      </div>
+
+      <!-- Articles Grid (20 Articles) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="blogListingGrid">
+        {BLOG_POSTS.map((post) => (
+          <article 
+            class="blog-article-card group rounded-2xl p-4 bg-white border border-[#F4F6FB] hover:border-[#EEF2FF] hover:shadow-card-active transition-all duration-300 flex flex-col justify-between"
+            data-cluster={post.cluster}
+          >
+            <div>
+              <div class="relative rounded-xl overflow-hidden h-52 mb-4 bg-[#F1F5FF]">
+                <picture>
+                  <source srcset={post.image} type="image/webp" />
+                  <img 
+                    src={post.image} 
+                    alt={post.title} 
+                    title={post.title}
+                    width="400"
+                    height="208"
+                    loading="lazy"
+                    decoding="async"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </picture>
+                <span class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-[#131117]/85 backdrop-blur-sm text-white text-[11px] font-bold">
+                  {post.category}
+                </span>
+              </div>
+
+              <div class="px-1">
+                <div class="flex items-center gap-3 text-xs text-[#8C8B91] font-medium mb-2">
+                  <span><i class="fa-regular fa-calendar text-[#FF8A00] mr-1.5"></i>{post.date}</span>
+                  <span>•</span>
+                  <span><i class="fa-regular fa-clock text-[#2949C6] mr-1.5"></i>{post.readTime}</span>
+                </div>
+                <h2 class="text-base sm:text-lg font-bold text-[#1F3E72] group-hover:text-[#2949C6] transition-colors leading-snug line-clamp-2">
+                  <a href={`/blog/${post.slug}`}>
+                    {post.title}
+                  </a>
+                </h2>
+                <p class="mt-2 text-xs text-[#8C8B91] leading-relaxed line-clamp-3">
+                  {post.excerpt}
+                </p>
+              </div>
+            </div>
+
+            <div class="px-1 mt-5 pt-3 border-t border-[#F0F3FA] flex items-center justify-between">
+              <a 
+                href={`/blog/${post.slug}`} 
+                class="text-xs font-bold text-[#2949C6] group-hover:text-[#FF8A00] transition-colors inline-flex items-center gap-1.5"
+              >
+                <span>Lire l'article</span>
+                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+              </a>
+              <a 
+                href={`https://wa.me/${SITE_CONFIG.phoneApi}?text=${encodeURIComponent(`Bonjour Maître Louis Adama, j'ai lu votre article "${post.title}" et je souhaite vous consulter.`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-xs font-bold text-[#25D366] hover:underline inline-flex items-center gap-1"
+              >
+                <i class="fa-brands fa-whatsapp text-sm"></i>
+                <span>Nous Contacter</span>
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+  <FloatingWhatsApp />
+</BaseLayout>
+
+<script>
+  function setupBlogFilters() {
+    const buttons = document.querySelectorAll('.blog-cluster-btn');
+    const cards = document.querySelectorAll('.blog-article-card');
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const cluster = btn.getAttribute('data-cluster') || 'all';
+
+        buttons.forEach((b) => {
+          if (b === btn) {
+            b.className = 'blog-cluster-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-[#2949C6] text-white shadow-blue-btn transition cursor-pointer';
+          } else {
+            b.className = 'blog-cluster-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-white border border-[#EEF2FF] text-[#1F3E72] hover:bg-[#EEF2FF] transition cursor-pointer';
+          }
+        });
+
+        cards.forEach((c) => {
+          const cardCluster = c.getAttribute('data-cluster');
+          if (cluster === 'all' || cardCluster === cluster) {
+            (c as HTMLElement).style.display = 'flex';
+          } else {
+            (c as HTMLElement).style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  setupBlogFilters();
+  document.addEventListener('astro:page-load', setupBlogFilters);
+</script>
