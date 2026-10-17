@@ -37,32 +37,17 @@ const SITE_CONFIG = await getSiteSettings();
           {SITE_CONFIG.valuesDescription}
         </p>
 
-        <!-- Accordion List (Zero AI cliche icons, using ShieldCheck, Eye, Lock, Comments) -->
-        <div class="mt-8 space-y-4" id="valueAccordion">
-          {VALUES_DATA.map((item, index) => (
-            <div 
-              class={`accordion-item rounded-xl border border-[#F0F3FA] bg-white p-4 sm:p-5 transition-all duration-300 cursor-pointer ${item.activeByDefault ? 'active' : ''}`}
-              data-index={index}
-            >
-              <div class="flex items-center justify-between gap-4">
-                <div class="flex items-center gap-4">
-                  <div class="w-9 h-9 rounded-lg bg-[#EEF2FF] text-[#2949C6] flex items-center justify-center shrink-0">
-                    <i class={`fa-solid ${item.icon} text-sm`}></i>
-                  </div>
-                  <h3 class="font-bold text-base sm:text-base text-[#1F3E72]">{item.title}</h3>
-                </div>
-                <div class="w-7 h-7 rounded-md bg-[#EEF2FF] text-[#2949C6] flex items-center justify-center shrink-0">
-                  <i class={`accordion-icon fa-solid ${item.activeByDefault ? 'fa-caret-up' : 'fa-caret-down'} text-xs transition-transform`}></i>
-                </div>
+        <!-- Values List (Only Titles) -->
+        <ul class="mt-8 space-y-3.5" id="valueList">
+          {VALUES_DATA.map((item) => (
+            <li class="flex items-center gap-4 rounded-xl border border-[#F0F3FA] bg-[#FAFBFD] p-3.5 sm:p-4 transition-colors hover:border-[#2949C6]/20">
+              <div class="w-9 h-9 rounded-lg bg-[#EEF2FF] text-[#2949C6] flex items-center justify-center shrink-0">
+                <i class={`fa-solid ${item.icon} text-sm`}></i>
               </div>
-              <div class="accordion-content">
-                <p class="pt-4 text-[16px] sm:text-base text-[#4A5568] leading-relaxed">
-                  {item.description}
-                </p>
-              </div>
-            </div>
+              <h3 class="font-bold text-base text-[#1F3E72]">{item.title}</h3>
+            </li>
           ))}
-        </div>
+        </ul>
 
         <!-- Ultra-short CTA Button -->
         <div class="mt-8">
@@ -82,28 +67,3 @@ const SITE_CONFIG = await getSiteSettings();
     </div>
   </div>
 </section>
-
-<script>
-  function setupAccordion() {
-    const items = document.querySelectorAll('#valueAccordion .accordion-item');
-    items.forEach((item) => {
-      item.addEventListener('click', () => {
-        const wasActive = item.classList.contains('active');
-        items.forEach(el => {
-          el.classList.remove('active');
-          const icon = el.querySelector('.accordion-icon');
-          if (icon) icon.className = 'accordion-icon fa-solid fa-caret-down text-xs transition-transform';
-        });
-
-        if (!wasActive) {
-          item.classList.add('active');
-          const icon = item.querySelector('.accordion-icon');
-          if (icon) icon.className = 'accordion-icon fa-solid fa-caret-up text-xs transition-transform';
-        }
-      });
-    });
-  }
-
-  setupAccordion();
-  document.addEventListener('astro:page-load', setupAccordion);
-</script>
