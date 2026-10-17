@@ -19,7 +19,7 @@ export default defineConfig({
   ],
   vite: {
     optimizeDeps: {
-      exclude: ['sanity'],
+      exclude: ['sanity', 'sanity-plugin-media', 'styled-components', '@sanity/ui'],
     },
   },
 });

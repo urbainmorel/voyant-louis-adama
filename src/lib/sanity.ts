@@ -6,6 +6,9 @@ import {
   TESTIMONIALS_DATA,
   FAQ_DATA,
   BLOG_POSTS,
+  PURIFICATION_DATA,
+  PARCEL_SHIPPING_DATA,
+  WHATSAPP_PROOFS_DATA,
   type ServiceItem,
   type ValueItem,
   type TestimonialItem,
@@ -13,6 +16,9 @@ import {
   type BlogPost,
   type YouTubeVideoItem,
   type GalleryPhotoItem,
+  type PurificationItem,
+  type ParcelProofItem,
+  type WhatsAppProofItem,
 } from '../data/siteData';
 
 export const sanityClient = createClient({
@@ -145,19 +151,18 @@ const DEFAULT_YOUTUBE_VIDEOS: YouTubeVideoItem[] = [
 ];
 
 const DEFAULT_GALLERY_PHOTOS: GalleryPhotoItem[] = [
-  { title: 'Rituel de Richesse & Prospérité 8', category: 'Richesse', image: '/images/cards/rituel%20richesse%20prosperite%20(8).webp' },
-  { title: 'Rituel de Richesse & Prospérité 1', category: 'Richesse', image: '/images/cards/rituel%20richesse%20prosperite%20(1).webp' },
-  { title: 'Rituel de Richesse & Prospérité 2', category: 'Richesse', image: '/images/cards/rituel%20richesse%20prosperite%20(2).webp' },
-  { title: 'Rituel de Richesse & Prospérité 3', category: 'Richesse', image: '/images/cards/rituel%20richesse%20prosperite%20(3).webp' },
-  { title: 'Rituel de Richesse & Prospérité 4', category: 'Richesse', image: '/images/cards/rituel%20richesse%20prosperite%20(4).webp' },
-  { title: 'Rituel de Richesse & Prospérité 5', category: 'Richesse', image: '/images/cards/rituel%20richesse%20prosperite%20(5).webp' },
-  { title: 'Rituel de Richesse & Prospérité 6', category: 'Richesse', image: '/images/cards/rituel%20richesse%20prosperite%20(6).webp' },
-  { title: 'Rituel de Richesse & Prospérité 7', category: 'Richesse', image: '/images/cards/rituel%20richesse%20prosperite%20(7).webp' },
-  { title: 'Rituel de Richesse & Prospérité 9', category: 'Richesse', image: '/images/cards/rituel%20richesse%20prosperite%20(9).webp' },
-  { title: 'Rituel de Richesse & Prospérité 10', category: 'Richesse', image: '/images/cards/rituel%20richesse%20prosperite%20(10).webp' },
-  { title: 'Rituel de Richesse & Prospérité 11', category: 'Richesse', image: '/images/cards/rituel%20richesse%20prosperite%20(11).webp' },
-  { title: 'Rituel de Richesse & Prospérité 12', category: 'Richesse', image: '/images/cards/rituel%20richesse%20prosperite%20(12).webp' },
-  { title: 'Rituel de Richesse & Prospérité 13', category: 'Richesse', image: '/images/cards/rituel%20richesse%20prosperite%20(13).webp' },
+  { title: "Autel de Richesse & Attestation de Mérite (Rép. du Bénin)", category: "Autorité & Richesse", image: "/images/rituels/autel-richesse-attestation-merite-benin.webp" },
+  { title: "Cérémonie Rituelle au Sanctuaire en Plein Air", category: "Cérémonie Sacrée", image: "/images/rituels/ceremonie-couvent-louis-adama-initiations.webp" },
+  { title: "Rituel de Retour Affectif à la Pomme Consacrée & Bougies Rouges", category: "Amour & Harmonie", image: "/images/rituels/rituel-retour-affectif-pomme-ruban-rouge.webp" },
+  { title: "Grand Autel Cérémoniel Traditionnel sur Feuilles Sacrées", category: "Haute Tradition", image: "/images/rituels/grand-autel-ceremoniel-feuilles-sacrees.webp" },
+  { title: "Rituel aux Eaux Fluviales Sacrées, Lampes à Huile & Hibiscus", category: "Purification", image: "/images/rituels/rituel-eau-sacree-offrande-fleurs.webp" },
+  { title: "Autel d'Attraction Amoureuse aux Fruits Sacrés & Miel Pur", category: "Amour", image: "/images/rituels/rituel-retour-affectif-autel-fruits.webp" },
+  { title: "Statuettes Ancestrales & Rituels d'Abondance Matérielle", category: "Richesse", image: "/images/rituels/autel-richesse-statuettes-ancestrales.webp" },
+  { title: "Savons Noirs Traditionnels aux Miroirs Sacrés Confectionnés au Couvent", category: "Protection & Chance", image: "/images/purification/savons-noirs-traditionnels-chance-miroir.webp" },
+  { title: "Composition du Puissant Bain de Déblocage & Chance du Maître Adama", category: "Purification", image: "/images/purification/bain-purification-deblocage-ingredients.webp" },
+  { title: "Colis Reçu par DHL & Première Manifestation d'Abondance", category: "Preuve Concrète", image: "/images/colis/colis-dhl-reception-billets-fcfa.webp" },
+  { title: "Rituel de Richesse & Prospérité au Sanctuaire", category: "Richesse", image: "/images/cards/rituel%20richesse%20prosperite%20(8).webp" },
+  { title: "Consécration des Finances & Prospérité Commerciale", category: "Commerce", image: "/images/cards/rituel%20richesse%20prosperite%20(5).webp" },
 ];
 
 export async function getSiteSettings(): Promise<SiteSettingsData> {
@@ -452,4 +457,16 @@ export async function getValues(): Promise<ValueItem[]> {
     console.warn('Fallback getValues:', err);
     return VALUES_DATA;
   }
+}
+
+export async function getPurificationData(): Promise<PurificationItem[]> {
+  return PURIFICATION_DATA;
+}
+
+export async function getParcelShippingData(): Promise<ParcelProofItem[]> {
+  return PARCEL_SHIPPING_DATA;
+}
+
+export async function getWhatsAppProofsData(): Promise<WhatsAppProofItem[]> {
+  return WHATSAPP_PROOFS_DATA;
 }

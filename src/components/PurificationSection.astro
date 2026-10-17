@@ -1,0 +1,96 @@
+---
+import { getPurificationData, getSiteSettings } from '../lib/sanity';
+
+const purificationItems = await getPurificationData();
+const SITE_CONFIG = await getSiteSettings();
+---
+
+<section id="purification" class="py-16 md:py-24 bg-[#FAFBFD] border-t border-[#F0F3FA] relative">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    
+    <!-- Section Header -->
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
+      <div>
+        <span class="text-[#FF8A00] font-semibold text-base sm:text-lg block mb-1">
+          Bains Sacrés & Savons Consacrés
+        </span>
+        <h2 class="text-2xl sm:text-4xl font-bold text-[#1F3E72] tracking-tight leading-snug sm:leading-[1.28]">
+          Purification de l'Aura & Savons de Chance<span class="text-[#FF8A00]">.</span>
+        </h2>
+      </div>
+      <p class="text-[16px] sm:text-sm text-[#4A5568] max-w-md">
+        Dans la tradition ésotérique africaine, aucun déblocage financier ni retour affectif n'opère sans une purification intégrale préalable. Découvrez les véritables préparations rituelles du Maître Louis Adama.
+      </p>
+    </div>
+
+    <!-- 4 Purification Cards Grid with Vertical Ratio Preserved -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+      {purificationItems.map((item, index) => (
+        <article 
+          class="group rounded-2xl p-4 sm:p-5 bg-white border border-[#EEF2FF] shadow-[0_8px_25px_-8px_rgba(31,62,114,0.08)] hover:shadow-card-active hover:border-[#2949C6]/25 transition-all duration-300 flex flex-col justify-between"
+        >
+          <div>
+            <!-- Vertical Image Frame Preserving Ratio with Click to Zoom -->
+            <div 
+              class="relative w-full aspect-[9/16] rounded-xl overflow-hidden bg-[#0D121F] mb-4 shadow-inner cursor-zoom-in group/img"
+              data-zoom-src={item.image}
+              data-zoom-title={item.title}
+              role="button"
+              tabindex="0"
+              aria-label={`Agrandir ${item.title}`}
+            >
+              <picture>
+                <source srcset={item.image} type="image/webp" />
+                <img 
+                  src={item.image} 
+                  alt={`${item.title} - Médium Voyant Africain Louis Adama`}
+                  title={item.title}
+                  width={item.width}
+                  height={item.height}
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full h-full object-contain group-hover/img:scale-105 transition-transform duration-500"
+                />
+              </picture>
+              
+              <!-- Badge -->
+              <span class="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-md bg-[#131117]/85 backdrop-blur-sm text-white text-[11px] font-bold z-10">
+                {item.badge}
+              </span>
+
+              <!-- Hover Zoom Hint -->
+              <div class="absolute inset-0 bg-black/30 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <span class="w-10 h-10 rounded-full bg-white/90 backdrop-blur-md text-[#1F3E72] flex items-center justify-center shadow-lg">
+                  <i class="fa-solid fa-expand text-xs"></i>
+                </span>
+              </div>
+            </div>
+
+            <!-- Content Meta -->
+            <div>
+              <span class="text-xs font-bold text-[#FF8A00] uppercase tracking-wider block mb-1">
+                {item.subtitle}
+              </span>
+              <h3 class="text-base sm:text-lg font-bold text-[#1F3E72] leading-snug group-hover:text-[#2949C6] transition-colors">
+                {item.title}
+              </h3>
+            </div>
+          </div>
+
+          <!-- Bottom Action Button -->
+          <div class="pt-4 border-t border-[#F0F3FA] mt-4">
+            <a 
+              href={`https://wa.me/${SITE_CONFIG.phoneApi}?text=${encodeURIComponent(item.ctaMessage)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full py-2.5 px-3 rounded-xl bg-[#EEF2FF] hover:bg-[#25D366] text-[#2949C6] hover:text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-all duration-200"
+            >
+              <i class="fa-brands fa-whatsapp text-sm"></i>
+              <span>Nous Contacter</span>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

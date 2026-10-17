@@ -83,6 +83,50 @@ export interface GalleryPhotoItem {
   image: string;
 }
 
+export interface PurificationItem {
+  id: number;
+  title: string;
+  badge: string;
+  subtitle: string;
+  description: string;
+  image: string;
+  width: number;
+  height: number;
+  aspectRatio: string;
+  highlights: string[];
+  ctaMessage: string;
+}
+
+export interface ParcelProofItem {
+  id: number;
+  title: string;
+  carrier: string;
+  carrierBadge: string;
+  destination: string;
+  description: string;
+  contents: string;
+  image: string;
+  width: number;
+  height: number;
+  aspectRatio: string;
+  verifiedLabel: string;
+}
+
+export interface WhatsAppProofItem {
+  id: number;
+  client: string;
+  country: string;
+  flag: string;
+  topic: string;
+  summary: string;
+  keyQuote: string;
+  image: string;
+  width: number;
+  height: number;
+  aspectRatio: string;
+  verifiedDate: string;
+}
+
 export const SITE_CONFIG = {
   name: "Médium Voyant Louis Adama",
   titleSuffix: "Grand Maître Spirituel Africain",
@@ -909,5 +953,254 @@ export const BLOG_POSTS: BlogPost[] = [
       "La peur légitime de nombreuses personnes avant de faire appel à un voyant est de subir un choc en retour ou de devoir payer un lourd tribut des années plus tard. Cette crainte est justifiée lorsque l'on s'adresse à des charlatans pratiquant des rites impurs.",
       "Chez le Médium Louis Adama, chaque prière et chaque offrande sont vouées à la justice, à la pureté et à l'harmonie universelle. Vous n'avez aucune dette obscure : vous récoltez simplement la bénédiction légitime de votre destinée débloquée."
     ]
+  }
+];
+
+export const PURIFICATION_DATA: PurificationItem[] = [
+  {
+    id: 1,
+    title: "Bain de Déblocage & Ingrédients Sacrés",
+    badge: "Formule Complète",
+    subtitle: "Les 8 Ingrédients Rituels d'Activation",
+    description: "Composition ancestrale selon les lois du Fâ : Pigeon blanc de paix, graines d'Akple, cola rouge, eau de Cologne 23 Famos, basilic sacré frais, clous de girofle d'énergie, citron vert purificateur et poudre noire d'activation. Nettoie l'aura des charges négatives et ouvre instantanément les voies matérielles.",
+    image: "/images/purification/bain-purification-deblocage-ingredients.webp",
+    width: 607,
+    height: 1080,
+    aspectRatio: "607/1080",
+    highlights: [
+      "Purification totale de l'aura et des chakras",
+      "Élimination des blocages d'argent héréditaires",
+      "Attraction magnétique de chance et d'opportunités",
+      "Activation sans aucun choc en retour"
+    ],
+    ctaMessage: "Bonjour Maître Louis Adama, je souhaite commander la composition du puissant bain de déblocage et de chance."
+  },
+  {
+    id: 2,
+    title: "Savons Noirs aux Miroirs Sacrés",
+    badge: "Préparation au Couvent",
+    subtitle: "Bouclier & Magnétisme Commercial",
+    description: "Véritables savons noirs traditionnels coulés dans des coquilles naturelles et incrustés d'un miroir sacré. Le miroir a pour pouvoir occulte de réfléchir et renvoyer à l'expéditeur tout mauvais œil et jalousie, tout en magnétisant les clients payants et la faveur des jurys.",
+    image: "/images/purification/savons-noirs-traditionnels-chance-miroir.webp",
+    width: 852,
+    height: 1080,
+    aspectRatio: "852/1080",
+    highlights: [
+      "Renvoi immédiat des attaques occultes de jalousie",
+      "Magnétisme puissant pour commerces et affaires",
+      "Faveur décisive lors d'entretiens, visas et concours",
+      "Confection personnalisée aux noms et prénoms"
+    ],
+    ctaMessage: "Bonjour Maître Louis Adama, je souhaite commander le véritable savon noir traditionnel aux miroirs sacrés."
+  },
+  {
+    id: 3,
+    title: "Bain Rituel Guidé à Domicile",
+    badge: "Application Pas à Pas",
+    subtitle: "Cérémonie Personnelle en Salle d'Eau",
+    description: "Photo authentique d'un consultant en pleine application du rituel de délivrance. Les 4 bougies consacrées (blanches et rouges) posées aux 4 points cardinaux encadrent le seau d'eau sanctifiée. Le Maître vous transmet les paroles sacrées et incantations de délivrance à prononcer.",
+    image: "/images/purification/rituel-bain-purification-domicile.webp",
+    width: 800,
+    height: 1423,
+    aspectRatio: "800/1423",
+    highlights: [
+      "Protocole précis et simple envoyé sur WhatsApp",
+      "Prières d'activation personnalisées selon votre cas",
+      "Réalisable partout : France, Afrique, Canada, Europe",
+      "Effets d'allègement ressentis dès la première ablution"
+    ],
+    ctaMessage: "Bonjour Maître Louis Adama, je souhaite recevoir les consignes et mon bain rituel de purification à domicile."
+  },
+  {
+    id: 4,
+    title: "Bain Douceur Eau Saint-Michel, Sel & Miel",
+    badge: "Adoucissement & Grâce",
+    subtitle: "Attirance Solaire & Apaisement",
+    description: "Formule d'adoucissement et de réconciliation : Eau de Cologne Mont Saint-Michel, sel de terre consacré, miel pur d'abeilles sauvages et jus de citrons naturels. Dissipe les rancœurs au foyer, attendrit le cœur d'un conjoint distant et attire les grâces financières.",
+    image: "/images/purification/bain-purification-eau-saint-michel-citron.webp",
+    width: 800,
+    height: 800,
+    aspectRatio: "1/1",
+    highlights: [
+      "Apaisement profond des tensions de couple",
+      "Adoucissement des relations professionnelles et familiales",
+      "Lavage des ondes de tristesse et de rancœur",
+      "Ingrédients naturels nobles de haute vibration"
+    ],
+    ctaMessage: "Bonjour Maître Louis Adama, je souhaite solliciter le bain de purification à l'eau Saint-Michel, sel et miel pur."
+  }
+];
+
+export const PARCEL_SHIPPING_DATA: ParcelProofItem[] = [
+  {
+    id: 1,
+    title: "Bordereau DHL Express Vers la France",
+    carrier: "DHL Express",
+    carrierBadge: "Europe & International",
+    destination: "Merdrignac, Bretagne, France (FR)",
+    description: "Bordereau officiel EXPRESS EASY DHL au départ du Bénin vers la Bretagne (France) pour M. Gaudin Jean François. Expédition sécurisée de 0.5 kg remise en main propre contre signature.",
+    contents: "Portefeuille Sacré + Bougies d'Onction + Bague de Protection",
+    image: "/images/colis/bordereau-dhl-france-merdrignac.webp",
+    width: 960,
+    height: 1280,
+    aspectRatio: "960/1280",
+    verifiedLabel: "Waybill DHL 22 4774 5485 • Livré en 72h"
+  },
+  {
+    id: 2,
+    title: "Reçu Officiel DHL International (ADAMA Louis)",
+    carrier: "DHL International Bénin",
+    carrierBadge: "Preuve Fiscale & Administrative",
+    destination: "Agence Cotonou Patte d'Oie • Acheminement Garanti",
+    description: "Reçu officiel N° 0311368 de l'agence centrale DHL International Bénin avec cachet original, attestant du règlement de transport de la Société ADAMA Louis sous le numéro de lettre de transport AWB 75 1593 8113.",
+    contents: "Reçu Officiel avec Cachet de l'Agence DHL",
+    image: "/images/colis/recu-officiel-dhl-adama-louis.webp",
+    width: 667,
+    height: 1000,
+    aspectRatio: "667/1000",
+    verifiedLabel: "Cachet Officiel DHL & Référence AWB"
+  },
+  {
+    id: 3,
+    title: "Bordereau DHL Express Vers le Congo-Brazzaville",
+    carrier: "DHL Express",
+    carrierBadge: "Afrique Centrale",
+    destination: "Brazzaville, République du Congo (CG)",
+    description: "Envoi officiel EXPRESS EASY de ADAMA Louis (Ouidah / Cotonou) à destination de Mme Mboungou Anaëlle Awa à Brazzaville Poto-Poto. Enveloppe sécurisée scellée et remise à domicile.",
+    contents: "Portefeuille + Bougies et Bague Consacrée",
+    image: "/images/colis/bordereau-dhl-congo-brazzaville.webp",
+    width: 459,
+    height: 816,
+    aspectRatio: "459/816",
+    verifiedLabel: "Waybill DHL 75 1593 8113 • Brazzaville"
+  },
+  {
+    id: 4,
+    title: "Réception de Colis DHL & Manifestation d'Abondance",
+    carrier: "DHL Réception",
+    carrierBadge: "Preuve Client Réelle",
+    destination: "Livraison Réussie à Domicile",
+    description: "Photo transmise avec gratitude par un consultant lors de l'ouverture de son pli DHL officiel jaune, montrant le travail spirituel accompli et la manifestation de la liasse de billets de banque.",
+    contents: "Enveloppe DHL Jaune + Liasse de Billets FCFA",
+    image: "/images/colis/colis-dhl-reception-billets-fcfa.webp",
+    width: 754,
+    height: 1008,
+    aspectRatio: "754/1008",
+    verifiedLabel: "Colis Réceptionné & Résultats Concrets"
+  },
+  {
+    id: 5,
+    title: "Préparation de Sacoche Sacrée sur Carton DHL",
+    carrier: "Conditionnement DHL",
+    carrierBadge: "Sanctuaire",
+    destination: "Expédition Internationale Sécurisée",
+    description: "La pochette rituelle chargée de cauris sacrés et les deux bougies d'onction (jaune et rouge) préparées au couvent sur la boîte DHL Express avant mise sous pli hermétique et inviolable.",
+    contents: "Pochette Sacrée aux Cauris + Bougies Rituel",
+    image: "/images/colis/boite-dhl-sacoche-sacree-bougies.webp",
+    width: 774,
+    height: 1000,
+    aspectRatio: "774/1000",
+    verifiedLabel: "Emballage Discret & Intégrité Spirituelle"
+  },
+  {
+    id: 6,
+    title: "Suivi en Ligne en Temps Réel sur le Portail DHL",
+    carrier: "Portail Web DHL",
+    carrierBadge: "Traçabilité Mondiale",
+    destination: "Consultation 24h/24 par le Client",
+    description: "Capture d'écran du compte DHL Express montrant l'enregistrement du Waybill 2247745485. Chaque consultant reçoit son code de suivi pour suivre la progression exacte de son paquet depuis Cotonou.",
+    contents: "Code de Suivi Express : 2247745485",
+    image: "/images/colis/suivi-en-ligne-tracking-dhl.webp",
+    width: 607,
+    height: 1080,
+    aspectRatio: "607/1080",
+    verifiedLabel: "Traçabilité DHL en Direct"
+  },
+  {
+    id: 7,
+    title: "Expédition Sous-Régionale par Bus Express STM",
+    carrier: "Bus Inter-États STM",
+    carrierBadge: "Afrique de l'Ouest",
+    destination: "Cotonou => Ouagadougou (Burkina Faso)",
+    description: "Bordereau original de colisage par car grand confort STM (Société de Transport Moderne) au départ de Cotonou vers Ouagadougou pour M. Nana Ali. Réception rapide et sécurisée en gare routière.",
+    contents: "Colisage Spécial par Transport Terrestre Express",
+    image: "/images/colis/ticket-bus-stm-cotonou-ouagadougou-1.webp",
+    width: 780,
+    height: 1040,
+    aspectRatio: "780/1040",
+    verifiedLabel: "Liaison Directe Burkina Faso, Niger, Mali"
+  }
+];
+
+export const WHATSAPP_PROOFS_DATA: WhatsAppProofItem[] = [
+  {
+    id: 1,
+    client: "Consultante en Belgique",
+    country: "Belgique",
+    flag: "🇧🇪",
+    topic: "Richesse & Confiance",
+    summary: "Soulagement et remerciements sincères après des doutes initiaux liés à de mauvaises expériences passées.",
+    keyQuote: "« Bonsoir mon père, vous êtes le meilleur. 😊 Je suis désolée d'avoir douté de vous au début... le porte-monnaie magique que vous m'avez vendu marche très bien comme vous m'avez dit. 🙏 »",
+    image: "/images/preuves_whatsapp/temoignage-whatsapp-belgique.webp",
+    width: 540,
+    height: 1080,
+    aspectRatio: "540/1080",
+    verifiedDate: "Numéro Indicatif +32 (Belgique)"
+  },
+  {
+    id: 2,
+    client: "Ismaël (Dakar)",
+    country: "Sénégal",
+    flag: "🇸🇳",
+    topic: "Retour Épouse & Richesse",
+    summary: "Double victoire : manifestation d'argent liquide et réconciliation amoureuse avec son épouse rentrée au domicile.",
+    keyQuote: "« Non maître, vous savez ma femme est revenue... Elle est venue à la maison. » — Réponse du Maître : « Prends soin de l'argent et ne fais pas de désordre avec ça »",
+    image: "/images/preuves_whatsapp/temoignage-whatsapp-senegal-liasse-amour.webp",
+    width: 540,
+    height: 1080,
+    aspectRatio: "540/1080",
+    verifiedDate: "Photo & Échange en Direct"
+  },
+  {
+    id: 3,
+    client: "Consultant en France",
+    country: "France",
+    flag: "🇫🇷",
+    topic: "Abondance Quotidienne",
+    summary: "Confirmation des bienfaits constants après une semaine complète de vérification rigoureuse.",
+    keyQuote: "« Maître, vous êtes vraiment incroyable. Le portefeuille produit correctement... et sans vous mentir il produit parfaitement chaque matin à 06h je ramasse les 5.000€. Merci infiniment 🤝🤝 »",
+    image: "/images/preuves_whatsapp/temoignage-whatsapp-france-5000-euros.webp",
+    width: 540,
+    height: 1080,
+    aspectRatio: "540/1080",
+    verifiedDate: "Numéro Indicatif +33 (France)"
+  },
+  {
+    id: 4,
+    client: "Consultante Diaspora",
+    country: "Amérique du Nord / Canada",
+    flag: "🇨🇦",
+    topic: "Accompagnement Paternel",
+    summary: "Gratitude profonde pour la protection spirituelle et l'écoute bienveillante reçue au fil des mois.",
+    keyQuote: "« Je suis très très très contente de t'avoir rencontré... vs êtes comme un papa pour moi le monde est vraiment petit. Merci merci papa. » — Maître Adama : « Je suis ravi 🥰 »",
+    image: "/images/preuves_whatsapp/temoignage-whatsapp-diaspora-remerciement.webp",
+    width: 540,
+    height: 1080,
+    aspectRatio: "540/1080",
+    verifiedDate: "Numéro Indicatif +1 (Canada / USA)"
+  },
+  {
+    id: 5,
+    client: "Boîte WhatsApp Business",
+    country: "Afrique & Monde",
+    flag: "🌍",
+    topic: "Retraits Multiples Vérifiés",
+    summary: "Aperçu de la file d'attente WhatsApp montrant plusieurs consultants recevant leurs sommes et exprimant leur joie.",
+    keyQuote: "« Galina : Vous êtes vraiment un homme de... Ludwig : Oui j'ai fait le retrait sans problème... Romuald : Merci je viens de retirer les 500mil... Ismaël : J'ai reçu 900.000fcfa merci infini »",
+    image: "/images/preuves_whatsapp/liste-discussions-whatsapp-business.webp",
+    width: 572,
+    height: 972,
+    aspectRatio: "572/972",
+    verifiedDate: "Flux Quotidien WhatsApp Business"
   }
 ];

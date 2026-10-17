@@ -1,0 +1,170 @@
+[
+  {
+    "dest": "colis/bordereau-dhl-france-merdrignac.webp",
+    "width": 960,
+    "height": 1280,
+    "ratio": "0.750",
+    "sizeKB": "75.8"
+  },
+  {
+    "dest": "colis/bordereau-dhl-congo-brazzaville.webp",
+    "width": 459,
+    "height": 816,
+    "ratio": "0.563",
+    "sizeKB": "29.6"
+  },
+  {
+    "dest": "colis/recu-officiel-dhl-adama-louis.webp",
+    "width": 667,
+    "height": 1000,
+    "ratio": "0.667",
+    "sizeKB": "35.0"
+  },
+  {
+    "dest": "colis/colis-dhl-reception-billets-fcfa.webp",
+    "width": 754,
+    "height": 1008,
+    "ratio": "0.748",
+    "sizeKB": "41.3"
+  },
+  {
+    "dest": "colis/boite-dhl-sacoche-sacree-bougies.webp",
+    "width": 774,
+    "height": 1000,
+    "ratio": "0.774",
+    "sizeKB": "24.3"
+  },
+  {
+    "dest": "colis/suivi-en-ligne-tracking-dhl.webp",
+    "width": 607,
+    "height": 1080,
+    "ratio": "0.562",
+    "sizeKB": "16.5"
+  },
+  {
+    "dest": "colis/ticket-bus-stm-cotonou-ouagadougou-1.webp",
+    "width": 780,
+    "height": 1040,
+    "ratio": "0.750",
+    "sizeKB": "27.7"
+  },
+  {
+    "dest": "colis/ticket-bus-stm-cotonou-ouagadougou-2.webp",
+    "width": 780,
+    "height": 1040,
+    "ratio": "0.750",
+    "sizeKB": "24.9"
+  },
+  {
+    "dest": "preuves_whatsapp/liste-discussions-whatsapp-business.webp",
+    "width": 572,
+    "height": 972,
+    "ratio": "0.588",
+    "sizeKB": "26.6"
+  },
+  {
+    "dest": "preuves_whatsapp/temoignage-whatsapp-belgique.webp",
+    "width": 540,
+    "height": 1080,
+    "ratio": "0.500",
+    "sizeKB": "46.1"
+  },
+  {
+    "dest": "preuves_whatsapp/temoignage-whatsapp-senegal-liasse-amour.webp",
+    "width": 540,
+    "height": 1080,
+    "ratio": "0.500",
+    "sizeKB": "41.5"
+  },
+  {
+    "dest": "preuves_whatsapp/temoignage-whatsapp-france-5000-euros.webp",
+    "width": 540,
+    "height": 1080,
+    "ratio": "0.500",
+    "sizeKB": "52.8"
+  },
+  {
+    "dest": "preuves_whatsapp/temoignage-whatsapp-diaspora-remerciement.webp",
+    "width": 540,
+    "height": 1080,
+    "ratio": "0.500",
+    "sizeKB": "46.4"
+  },
+  {
+    "dest": "purification/bain-purification-deblocage-ingredients.webp",
+    "width": 607,
+    "height": 1080,
+    "ratio": "0.562",
+    "sizeKB": "69.1"
+  },
+  {
+    "dest": "purification/rituel-bain-purification-domicile.webp",
+    "width": 800,
+    "height": 1423,
+    "ratio": "0.562",
+    "sizeKB": "60.7"
+  },
+  {
+    "dest": "purification/bain-purification-eau-saint-michel-citron.webp",
+    "width": 800,
+    "height": 800,
+    "ratio": "1.000",
+    "sizeKB": "53.6"
+  },
+  {
+    "dest": "purification/savons-noirs-traditionnels-chance-miroir.webp",
+    "width": 852,
+    "height": 1080,
+    "ratio": "0.789",
+    "sizeKB": "87.6"
+  },
+  {
+    "dest": "rituels/ceremonie-couvent-louis-adama-initiations.webp",
+    "width": 853,
+    "height": 1080,
+    "ratio": "0.790",
+    "sizeKB": "118.3"
+  },
+  {
+    "dest": "rituels/rituel-retour-affectif-autel-fruits.webp",
+    "width": 736,
+    "height": 1308,
+    "ratio": "0.563",
+    "sizeKB": "101.8"
+  },
+  {
+    "dest": "rituels/rituel-retour-affectif-pomme-ruban-rouge.webp",
+    "width": 736,
+    "height": 1308,
+    "ratio": "0.563",
+    "sizeKB": "77.1"
+  },
+  {
+    "dest": "rituels/grand-autel-ceremoniel-feuilles-sacrees.webp",
+    "width": 720,
+    "height": 1280,
+    "ratio": "0.563",
+    "sizeKB": "96.9"
+  },
+  {
+    "dest": "rituels/rituel-eau-sacree-offrande-fleurs.webp",
+    "width": 736,
+    "height": 981,
+    "ratio": "0.750",
+    "sizeKB": "99.2"
+  },
+  {
+    "dest": "rituels/autel-richesse-attestation-merite-benin.webp",
+    "width": 960,
+    "height": 720,
+    "ratio": "1.333",
+    "sizeKB": "93.3"
+  },
+  {
+    "dest": "rituels/autel-richesse-statuettes-ancestrales.webp",
+    "width": 960,
+    "height": 720,
+    "ratio": "1.333",
+    "sizeKB": "92.4"
+  }
+]

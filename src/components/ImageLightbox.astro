@@ -1,0 +1,105 @@
+---
+// Global Lightbox for all zoomable images across the site
+---
+
+<div 
+  id="globalImageModal" 
+  class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6 bg-black/90 backdrop-blur-md transition-opacity duration-300"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Agrandissement de photo"
+>
+  <div class="relative max-w-5xl w-full max-h-[95vh] flex flex-col items-center justify-center">
+    <!-- Close button -->
+    <button 
+      id="closeGlobalModalBtn" 
+      type="button"
+      aria-label="Fermer"
+      class="absolute -top-12 right-0 sm:-top-12 sm:right-0 z-20 w-10 h-10 rounded-full bg-white/10 hover:bg-[#25D366] text-white flex items-center justify-center transition cursor-pointer"
+    >
+      <i class="fa-solid fa-xmark text-lg"></i>
+    </button>
+
+    <!-- Modal Content Frame -->
+    <div class="relative w-full overflow-hidden rounded-2xl border border-white/10 shadow-2xl bg-[#080D1A] flex flex-col items-center justify-center p-2 sm:p-4">
+      <img 
+        id="globalModalImg" 
+        src="" 
+        alt="" 
+        class="max-h-[80vh] w-auto max-w-full object-contain mx-auto rounded-lg"
+      />
+      
+      <!-- Caption / Title Bar -->
+      <div class="w-full mt-3 px-3 py-2 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-white/10">
+        <p id="globalModalCaption" class="text-xs sm:text-sm text-gray-200 font-semibold text-center sm:text-left"></p>
+        <span class="text-[11px] text-[#25D366] font-bold flex items-center gap-1.5 shrink-0">
+          <i class="fa-solid fa-certificate text-xs"></i>
+          <span>Document & Image Certifiée</span>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function setupGlobalLightbox() {
+    const modal = document.getElementById('globalImageModal');
+    const modalImg = document.getElementById('globalModalImg') as HTMLImageElement;
+    const modalCaption = document.getElementById('globalModalCaption');
+    const closeBtn = document.getElementById('closeGlobalModalBtn');
+
+    if (!modal || !modalImg) return;
+
+    function openModal(src: string, title?: string) {
+      if (!src) return;
+      modalImg.src = src;
+      modalImg.alt = title || 'Agrandissement';
+      if (modalCaption) {
+        modalCaption.textContent = title || '';
+      }
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      modalImg.src = '';
+      document.body.style.overflow = '';
+    }
+
+    // Attach click listeners to all elements with [data-zoom-src]
+    document.querySelectorAll('[data-zoom-src]').forEach((el) => {
+      el.addEventListener('click', () => {
+        const src = el.getAttribute('data-zoom-src') || '';
+        const title = el.getAttribute('data-zoom-title') || '';
+        openModal(src, title);
+      });
+      el.addEventListener('keydown', (e) => {
+        const ev = e as KeyboardEvent;
+        if (ev.key === 'Enter' || ev.key === ' ') {
+          ev.preventDefault();
+          const src = el.getAttribute('data-zoom-src') || '';
+          const title = el.getAttribute('data-zoom-title') || '';
+          openModal(src, title);
+        }
+      });
+    });
+
+    if (closeBtn) closeBtn.onclick = closeModal;
+
+    modal.onclick = (e) => {
+      if (e.target === modal) closeModal();
+    };
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModal();
+      }
+    });
+  }
+
+  setupGlobalLightbox();
+  document.addEventListener('astro:page-load', setupGlobalLightbox);
+</script>

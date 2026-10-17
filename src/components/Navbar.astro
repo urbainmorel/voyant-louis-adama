@@ -33,9 +33,11 @@ const SITE_CONFIG = await getSiteSettings();
     </a>
 
     <!-- Desktop Navigation Menu -->
-    <nav class="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-medium text-white/80">
+    <nav class="hidden md:flex items-center gap-5 lg:gap-7 text-sm font-medium text-white/80">
       <a href={`${homePrefix}#residences`} class="hover:text-white transition-colors">Services</a>
-      <a href={`${homePrefix}#values`} class="hover:text-white transition-colors">Valeurs</a>
+      <a href={`${homePrefix}#purification`} class="hover:text-white transition-colors">Purification</a>
+      <a href={`${homePrefix}#expeditions`} class="hover:text-white transition-colors">Expéditions</a>
+      <a href={`${homePrefix}#preuves-whatsapp`} class="hover:text-white transition-colors">Preuves</a>
       <a href={`${homePrefix}#gallery`} class="hover:text-white transition-colors">Galeries</a>
       <a href="/blog" class="hover:text-white transition-colors">Blog</a>
       <a href={`${homePrefix}#testimonials`} class="hover:text-white transition-colors">Avis</a>
@@ -67,13 +69,15 @@ const SITE_CONFIG = await getSiteSettings();
   </div>
 
   <!-- Mobile Navigation Drawer -->
-  <div id="mobileMenu" class="hidden md:hidden bg-[#070F2E]/98 backdrop-blur-xl border-b border-white/10 px-6 py-5 space-y-3 shadow-2xl">
-    <a href={`${homePrefix}#residences`} class="mobile-nav-link block py-2.5 text-[17px] text-white/95 font-medium hover:text-homyz-orange">Nos Services</a>
-    <a href={`${homePrefix}#values`} class="mobile-nav-link block py-2.5 text-[17px] text-white/95 font-medium hover:text-homyz-orange">Nos Valeurs</a>
-    <a href={`${homePrefix}#gallery`} class="mobile-nav-link block py-2.5 text-[17px] text-white/95 font-medium hover:text-homyz-orange">Galeries Photo & Vidéo</a>
-    <a href="/blog" class="mobile-nav-link block py-2.5 text-[17px] text-white/95 font-medium hover:text-homyz-orange">Blog Spirituel (20 Guides)</a>
-    <a href={`${homePrefix}#testimonials`} class="mobile-nav-link block py-2.5 text-[17px] text-white/95 font-medium hover:text-homyz-orange">Avis Clients</a>
-    <a href={`${homePrefix}#faq`} class="mobile-nav-link block py-2.5 text-[17px] text-white/95 font-medium hover:text-homyz-orange">FAQ</a>
+  <div id="mobileMenu" class="hidden md:hidden bg-[#070F2E]/98 backdrop-blur-xl border-b border-white/10 px-6 py-5 space-y-2.5 shadow-2xl">
+    <a href={`${homePrefix}#residences`} class="mobile-nav-link block py-2 text-[16px] text-white/95 font-medium hover:text-homyz-orange">Nos Services</a>
+    <a href={`${homePrefix}#purification`} class="mobile-nav-link block py-2 text-[16px] text-white/95 font-medium hover:text-homyz-orange">Bains & Savons Sacrés</a>
+    <a href={`${homePrefix}#expeditions`} class="mobile-nav-link block py-2 text-[16px] text-white/95 font-medium hover:text-homyz-orange">Expéditions DHL & Colis</a>
+    <a href={`${homePrefix}#preuves-whatsapp`} class="mobile-nav-link block py-2 text-[16px] text-white/95 font-medium hover:text-homyz-orange">Preuves WhatsApp Réelles</a>
+    <a href={`${homePrefix}#gallery`} class="mobile-nav-link block py-2 text-[16px] text-white/95 font-medium hover:text-homyz-orange">Galeries Photo & Vidéo</a>
+    <a href="/blog" class="mobile-nav-link block py-2 text-[16px] text-white/95 font-medium hover:text-homyz-orange">Blog Spirituel (20 Guides)</a>
+    <a href={`${homePrefix}#testimonials`} class="mobile-nav-link block py-2 text-[16px] text-white/95 font-medium hover:text-homyz-orange">Avis Clients</a>
+    <a href={`${homePrefix}#faq`} class="mobile-nav-link block py-2 text-[16px] text-white/95 font-medium hover:text-homyz-orange">FAQ</a>
     <div class="pt-2">
       <a 
         href={`https://wa.me/${SITE_CONFIG.phoneApi}?text=${encodeURIComponent('Bonjour Maître Louis Adama, je souhaite une consultation confidentielle.')}`}

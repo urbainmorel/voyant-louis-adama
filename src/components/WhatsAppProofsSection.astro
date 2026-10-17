@@ -1,0 +1,76 @@
+---
+import { getWhatsAppProofsData, getSiteSettings } from '../lib/sanity';
+
+const proofs = await getWhatsAppProofsData();
+const SITE_CONFIG = await getSiteSettings();
+---
+
+<section id="preuves-whatsapp" class="py-16 md:py-24 bg-[#FAFBFD] border-t border-[#F0F3FA] relative">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    
+    <!-- Section Header -->
+    <div class="mb-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#E7F8EE] text-[#1DA851] text-xs font-bold mb-2">
+        <i class="fa-brands fa-whatsapp text-sm"></i>
+        <span>Preuves Sociales en Direct</span>
+      </div>
+      <h2 class="text-2xl sm:text-4xl font-bold text-[#1F3E72] tracking-tight leading-snug sm:leading-[1.28]">
+        Captures & Preuves WhatsApp Authentiques<span class="text-[#FF8A00]">.</span>
+      </h2>
+    </div>
+
+    <!-- 5 Vertical Smartphone Cards Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 items-stretch">
+      {proofs.map((item) => (
+        <article 
+          class="group rounded-3xl p-3.5 bg-white border border-[#EEF2FF] shadow-[0_10px_30px_-10px_rgba(31,62,114,0.08)] hover:shadow-card-active hover:border-[#25D366]/30 transition-all duration-300 flex flex-col"
+        >
+          <!-- Smartphone Shell Frame (Strictly Preserving Vertical 9:16 / 1:2 Ratio) -->
+          <div 
+            class="relative w-full aspect-[9/18] rounded-2xl overflow-hidden bg-[#0A101D] border-4 border-[#1E293B] shadow-lg mb-3.5 cursor-zoom-in group/phone"
+            data-zoom-src={item.image}
+            data-zoom-title={`${item.client} (${item.country})`}
+            role="button"
+            tabindex="0"
+            aria-label={`Agrandir le message de ${item.client}`}
+          >
+            <!-- Subtle Speaker Notch at top -->
+            <div class="absolute top-1.5 left-1/2 -translate-x-1/2 w-12 h-1 rounded-full bg-white/20 z-20 pointer-events-none"></div>
+
+            <!-- Full Vertical Screenshot Image without Cropping -->
+            <picture>
+              <source srcset={item.image} type="image/webp" />
+              <img 
+                src={item.image} 
+                alt={`Capture de discussion WhatsApp - ${item.client} (${item.country})`}
+                title={`Témoignage vérifié WhatsApp ${item.country}`}
+                width={item.width}
+                height={item.height}
+                loading="lazy"
+                decoding="async"
+                class="w-full h-full object-contain group-hover/phone:scale-105 transition-transform duration-500"
+              />
+            </picture>
+
+            <!-- Hover Zoom Hint -->
+            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover/phone:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+              <span class="w-10 h-10 rounded-full bg-white/90 backdrop-blur-md text-[#1F3E72] flex items-center justify-center shadow-lg">
+                <i class="fa-solid fa-expand text-xs"></i>
+              </span>
+            </div>
+          </div>
+
+          <!-- Meta details under phone frame -->
+          <div class="px-1">
+            <span class="text-[11px] font-bold text-[#FF8A00] block mb-0.5 uppercase tracking-wider">
+              {item.topic}
+            </span>
+            <h3 class="text-sm font-bold text-[#1F3E72] leading-snug group-hover:text-[#2949C6] transition-colors">
+              {item.client}
+            </h3>
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
